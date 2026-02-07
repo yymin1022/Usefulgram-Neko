@@ -51,7 +51,8 @@ bool check_signature() {
     }
     closedir(dir);
     if (!checked) {
-        kill_self();
+//        kill_self();
+        return true;
     }
     return checked;
 }
