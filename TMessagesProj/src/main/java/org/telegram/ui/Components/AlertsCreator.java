@@ -162,7 +162,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.helpers.PasscodeHelper;
 
 public class AlertsCreator {

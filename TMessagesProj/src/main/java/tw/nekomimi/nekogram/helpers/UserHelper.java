@@ -19,7 +19,7 @@ import org.telegram.ui.TopicsFragment;
 import java.util.Locale;
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 
 public class UserHelper extends BaseController {
 

@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.NekoConfig;
 
 public class ConfigHelper extends BaseRemoteHelper {

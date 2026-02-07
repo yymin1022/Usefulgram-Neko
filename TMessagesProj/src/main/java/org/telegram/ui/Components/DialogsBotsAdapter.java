@@ -3,13 +3,11 @@ package org.telegram.ui.Components;
 import static org.telegram.messenger.LocaleController.getString;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteStatement;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
-import android.text.style.URLSpan;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -39,7 +37,7 @@ import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 
 public class DialogsBotsAdapter extends UniversalAdapter {
 

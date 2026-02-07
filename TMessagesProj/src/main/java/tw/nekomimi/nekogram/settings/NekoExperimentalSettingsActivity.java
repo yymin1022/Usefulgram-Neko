@@ -29,7 +29,7 @@ import org.telegram.ui.Cells.TextSettingsCell;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.AnalyticsHelper;
 import tw.nekomimi.nekogram.helpers.PopupHelper;

@@ -24,7 +24,7 @@ import org.telegram.ui.web.BotWebViewContainer;
 
 import java.util.function.Consumer;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.NekoConfig;
 
 public class WebAppHelper {

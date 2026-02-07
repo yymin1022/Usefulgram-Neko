@@ -7,7 +7,7 @@ import org.telegram.messenger.UserConfig;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.helpers.remote.BaseRemoteHelper;
 
 public class RegDateHelper {

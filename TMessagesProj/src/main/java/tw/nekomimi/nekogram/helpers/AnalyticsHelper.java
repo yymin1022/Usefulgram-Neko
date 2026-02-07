@@ -20,7 +20,7 @@ import io.sentry.Sentry;
 import io.sentry.SentryLevel;
 import io.sentry.android.core.SentryAndroid;
 import io.sentry.protocol.User;
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 
 public class AnalyticsHelper {
     private static SharedPreferences preferences;

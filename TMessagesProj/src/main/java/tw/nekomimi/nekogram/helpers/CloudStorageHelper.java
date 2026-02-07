@@ -11,7 +11,7 @@ import org.telegram.tgnet.tl.TL_bots;
 
 import java.util.HashMap;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 
 public class CloudStorageHelper extends AccountInstance {
 

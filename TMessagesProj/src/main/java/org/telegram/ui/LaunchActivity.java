@@ -258,7 +258,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.forward.ForwardContext;
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.ApkInstaller;

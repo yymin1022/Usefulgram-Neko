@@ -10,7 +10,7 @@ import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
 
-import tw.nekomimi.nekogram.Extra;
+import com.yong.usefulgram.Extra;
 import tw.nekomimi.nekogram.NekoConfig;
 
 public class InlineBotHelper extends BaseController {
