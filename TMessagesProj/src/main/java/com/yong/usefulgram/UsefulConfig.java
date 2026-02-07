@@ -170,7 +170,7 @@ public class UsefulConfig {
             }
             isChineseUser = ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isChineseUser);
 
-            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
             preferIPv6 = preferences.getBoolean("preferIPv6", false);
             hidePhone = preferences.getBoolean("hidePhone", true);
             ignoreBlocked = preferences.getBoolean("ignoreBlocked2", false);
@@ -272,7 +272,7 @@ public class UsefulConfig {
                     .setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE)
                     .create();
         }
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         return gson.toJson(preferences.getAll());
     }
 
@@ -284,7 +284,7 @@ public class UsefulConfig {
         }
         //noinspection unchecked
         Map<String, ?> map = gson.fromJson(config, Map.class);
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         preferences.unregisterOnSharedPreferenceChangeListener(listener);
         var editor = preferences.edit();
         editor.clear();
@@ -322,7 +322,7 @@ public class UsefulConfig {
 
     public static void setTranscribeProvider(int provider) {
         transcribeProvider = provider;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("transcribeProvider", transcribeProvider);
         editor.apply();
@@ -330,7 +330,7 @@ public class UsefulConfig {
 
     public static void setCfAccountID(String accountID) {
         cfAccountID = accountID;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("cfAccountID", cfAccountID);
         editor.apply();
@@ -338,7 +338,7 @@ public class UsefulConfig {
 
     public static void setCfApiToken(String apiToken) {
         cfApiToken = apiToken;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("cfApiToken", cfApiToken);
         editor.apply();
@@ -346,7 +346,7 @@ public class UsefulConfig {
 
     public static void setExternalTranslationProvider(String provider) {
         externalTranslationProvider = provider;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("externalTranslationProvider", externalTranslationProvider);
         editor.apply();
@@ -354,7 +354,7 @@ public class UsefulConfig {
 
     public static void setNewMarkdownParser(boolean newParser) {
         newMarkdownParser = newParser;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("newMarkdownParser", newMarkdownParser);
         editor.apply();
@@ -362,7 +362,7 @@ public class UsefulConfig {
 
     public static void saveRestrictedLanguages(Set<String> languages) {
         restrictedLanguages = languages;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putStringSet("restrictedLanguages", languages);
         editor.apply();
@@ -370,7 +370,7 @@ public class UsefulConfig {
 
     public static void setDoubleTapInAction(int action) {
         doubleTapInAction = action;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("doubleTapAction", doubleTapInAction);
         editor.apply();
@@ -378,7 +378,7 @@ public class UsefulConfig {
 
     public static void setDoubleTapOutAction(int action) {
         doubleTapOutAction = action;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("doubleTapOutAction", doubleTapOutAction);
         editor.apply();
@@ -386,7 +386,7 @@ public class UsefulConfig {
 
     public static void setTransType(int type) {
         transType = type;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("transType", transType);
         editor.apply();
@@ -394,7 +394,7 @@ public class UsefulConfig {
 
     public static void setDownloadSpeedBoost(int boost) {
         downloadSpeedBoost = boost;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("downloadSpeedBoost2", boost);
         editor.apply();
@@ -402,7 +402,7 @@ public class UsefulConfig {
 
     public static void togglePredictiveBackAnimation() {
         predictiveBackAnimation = !predictiveBackAnimation;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("predictiveBackAnimation", predictiveBackAnimation);
         editor.apply();
@@ -410,7 +410,7 @@ public class UsefulConfig {
 
     public static void toggleKeepFormatting() {
         keepFormatting = !keepFormatting;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("keepFormatting", keepFormatting);
         editor.apply();
@@ -418,7 +418,7 @@ public class UsefulConfig {
 
     public static void toggleHideChannelBottomButtons() {
         hideChannelBottomButtons = !hideChannelBottomButtons;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideChannelBottomButtons", hideChannelBottomButtons);
         editor.apply();
@@ -426,7 +426,7 @@ public class UsefulConfig {
 
     public static void toggleMinimizedStickerCreator() {
         minimizedStickerCreator = !minimizedStickerCreator;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("minimizedStickerCreator", minimizedStickerCreator);
         editor.apply();
@@ -434,7 +434,7 @@ public class UsefulConfig {
 
     public static void toggleForceFontWeightFallback() {
         forceFontWeightFallback = !forceFontWeightFallback;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("forceFontWeightFallback", forceFontWeightFallback);
         editor.apply();
@@ -442,7 +442,7 @@ public class UsefulConfig {
 
     public static void toggleAutoInlineBot() {
         autoInlineBot = !autoInlineBot;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("autoInlineBot", autoInlineBot);
         editor.apply();
@@ -450,7 +450,7 @@ public class UsefulConfig {
 
     public static void togglePreferOriginalQuality() {
         preferOriginalQuality = !preferOriginalQuality;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("preferOriginalQuality", preferOriginalQuality);
         editor.apply();
@@ -458,7 +458,7 @@ public class UsefulConfig {
 
     public static void toggleShowTimeHint() {
         showTimeHint = !showTimeHint;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showTimeHint", showTimeHint);
         editor.apply();
@@ -466,7 +466,7 @@ public class UsefulConfig {
 
     public static void toggleIgnoreContentRestriction() {
         ignoreContentRestriction = !ignoreContentRestriction;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("ignoreContentRestriction", ignoreContentRestriction);
         editor.apply();
@@ -474,7 +474,7 @@ public class UsefulConfig {
 
     public static void toggleReducedColors() {
         reducedColors = !reducedColors;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("reducedColors", reducedColors);
         editor.apply();
@@ -482,7 +482,7 @@ public class UsefulConfig {
 
     public static void toggleQuickForward() {
         quickForward = !quickForward;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("quickForward", quickForward);
         editor.apply();
@@ -490,7 +490,7 @@ public class UsefulConfig {
 
     public static void toggleHideStories() {
         hideStories = !hideStories;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideStories", hideStories);
         editor.apply();
@@ -498,7 +498,7 @@ public class UsefulConfig {
 
     public static void toggleShowQrCode() {
         showQrCode = !showQrCode;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showQrCode", showQrCode);
         editor.apply();
@@ -506,7 +506,7 @@ public class UsefulConfig {
 
     public static void toggleShowOpenIn() {
         showOpenIn = !showOpenIn;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showOpenIn", showOpenIn);
         editor.apply();
@@ -514,7 +514,7 @@ public class UsefulConfig {
 
     public static void toggleShowOriginal() {
         showOriginal = !showOriginal;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showOriginal", showOriginal);
         editor.apply();
@@ -522,7 +522,7 @@ public class UsefulConfig {
 
     public static void toggleMarkdownParseLinks() {
         markdownParseLinks = !markdownParseLinks;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("markdownParseLinks", markdownParseLinks);
         editor.apply();
@@ -530,7 +530,7 @@ public class UsefulConfig {
 
     public static void toggleDisableMarkdownByDefault() {
         disableMarkdownByDefault = !disableMarkdownByDefault;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableMarkdownByDefault", disableMarkdownByDefault);
         editor.apply();
@@ -538,7 +538,7 @@ public class UsefulConfig {
 
     public static void toggleHideTimeOnSticker() {
         hideTimeOnSticker = !hideTimeOnSticker;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideTimeOnSticker", hideTimeOnSticker);
         editor.apply();
@@ -546,7 +546,7 @@ public class UsefulConfig {
 
     public static void toggleShowRPCError() {
         showRPCError = !showRPCError;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showRPCError", showRPCError);
         editor.apply();
@@ -554,7 +554,7 @@ public class UsefulConfig {
 
     public static void toggleShowAddToSavedMessages() {
         showAddToSavedMessages = !showAddToSavedMessages;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showAddToSavedMessages", showAddToSavedMessages);
         editor.apply();
@@ -562,7 +562,7 @@ public class UsefulConfig {
 
     public static void toggleShowSetReminder() {
         showSetReminder = !showSetReminder;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showSetReminder", showSetReminder);
         editor.apply();
@@ -570,7 +570,7 @@ public class UsefulConfig {
 
     public static void toggleShowReport() {
         showReport = !showReport;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showReport", showReport);
         editor.apply();
@@ -578,7 +578,7 @@ public class UsefulConfig {
 
     public static void toggleShowDeleteDownloadedFile() {
         showDeleteDownloadedFile = !showDeleteDownloadedFile;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showDeleteDownloadedFile", showDeleteDownloadedFile);
         editor.apply();
@@ -586,7 +586,7 @@ public class UsefulConfig {
 
     public static void toggleShowMessageDetails() {
         showMessageDetails = !showMessageDetails;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showMessageDetails", showMessageDetails);
         editor.apply();
@@ -594,7 +594,7 @@ public class UsefulConfig {
 
     public static void toggleShowRepeat() {
         showRepeat = !showRepeat;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showRepeat", showRepeat);
         editor.apply();
@@ -602,7 +602,7 @@ public class UsefulConfig {
 
     public static void toggleIPv6() {
         preferIPv6 = !preferIPv6;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("preferIPv6", preferIPv6);
         editor.apply();
@@ -610,7 +610,7 @@ public class UsefulConfig {
 
     public static void toggleHidePhone() {
         hidePhone = !hidePhone;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hidePhone", hidePhone);
         editor.apply();
@@ -618,7 +618,7 @@ public class UsefulConfig {
 
     public static void toggleIgnoreBlocked() {
         ignoreBlocked = !ignoreBlocked;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("ignoreBlocked2", ignoreBlocked);
         editor.apply();
@@ -626,7 +626,7 @@ public class UsefulConfig {
 
     public static void setTabletMode(int mode) {
         tabletMode = mode;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("tabletMode", tabletMode);
         editor.apply();
@@ -634,7 +634,7 @@ public class UsefulConfig {
 
     public static void setNameOrder(int order) {
         nameOrder = order;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("nameOrder", nameOrder);
         editor.apply();
@@ -642,7 +642,7 @@ public class UsefulConfig {
 
     public static void setEventType(int type) {
         eventType = type;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("eventType", eventType);
         editor.apply();
@@ -650,7 +650,7 @@ public class UsefulConfig {
 
     public static void toggleShowTranslate() {
         showTranslate = !showTranslate;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showTranslate", showTranslate);
         editor.apply();
@@ -658,7 +658,7 @@ public class UsefulConfig {
 
     public static void setStickerSize(float size) {
         stickerSize = size;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putFloat("stickerSize", stickerSize);
         editor.apply();
@@ -666,7 +666,7 @@ public class UsefulConfig {
 
     public static void setTranslationProvider(String provider) {
         translationProvider = provider;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("translationProvider2", translationProvider);
         editor.apply();
@@ -674,7 +674,7 @@ public class UsefulConfig {
 
     public static void setTranslationTarget(String target) {
         translationTarget = target;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("translationTarget", translationTarget);
         editor.apply();
@@ -682,7 +682,7 @@ public class UsefulConfig {
 
     public static void setDeepLFormality(int formality) {
         deepLFormality = formality;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("deepLFormality", deepLFormality);
         editor.apply();
@@ -690,7 +690,7 @@ public class UsefulConfig {
 
     public static void toggleOpenArchiveOnPull() {
         openArchiveOnPull = !openArchiveOnPull;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("openArchiveOnPull", openArchiveOnPull);
         editor.apply();
@@ -698,7 +698,7 @@ public class UsefulConfig {
 
     public static void toggleHideKeyboardOnChatScroll() {
         hideKeyboardOnChatScroll = !hideKeyboardOnChatScroll;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideKeyboardOnChatScroll", hideKeyboardOnChatScroll);
         editor.apply();
@@ -706,7 +706,7 @@ public class UsefulConfig {
 
     public static void toggleAvatarAsDrawerBackground() {
         avatarAsDrawerBackground = !avatarAsDrawerBackground;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("avatarAsDrawerBackground", avatarAsDrawerBackground);
         editor.apply();
@@ -714,7 +714,7 @@ public class UsefulConfig {
 
     public static void toggleAvatarBackgroundBlur() {
         avatarBackgroundBlur = !avatarBackgroundBlur;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("avatarBackgroundBlur", avatarBackgroundBlur);
         editor.apply();
@@ -722,7 +722,7 @@ public class UsefulConfig {
 
     public static void toggleAvatarBackgroundDarken() {
         avatarBackgroundDarken = !avatarBackgroundDarken;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("avatarBackgroundDarken", avatarBackgroundDarken);
         editor.apply();
@@ -730,7 +730,7 @@ public class UsefulConfig {
 
     public static void toggleUseSystemEmoji() {
         useSystemEmoji = !useSystemEmoji;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("useSystemEmoji", useSystemEmoji);
         editor.apply();
@@ -738,7 +738,7 @@ public class UsefulConfig {
 
     public static void toggleRearVideoMessages() {
         rearVideoMessages = !rearVideoMessages;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("rearVideoMessages", rearVideoMessages);
         editor.apply();
@@ -746,7 +746,7 @@ public class UsefulConfig {
 
     public static void toggleHideAllTab() {
         hideAllTab = !hideAllTab;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideAllTab", hideAllTab);
         editor.apply();
@@ -754,7 +754,7 @@ public class UsefulConfig {
 
     public static void setTabsTitleType(int type) {
         tabsTitleType = type;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("tabsTitleType2", tabsTitleType);
         editor.apply();
@@ -762,7 +762,7 @@ public class UsefulConfig {
 
     public static void toggleConfirmAVMessage() {
         confirmAVMessage = !confirmAVMessage;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("confirmAVMessage", confirmAVMessage);
         editor.apply();
@@ -770,7 +770,7 @@ public class UsefulConfig {
 
     public static void toggleAskBeforeCall() {
         askBeforeCall = !askBeforeCall;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("askBeforeCall", askBeforeCall);
         editor.apply();
@@ -778,7 +778,7 @@ public class UsefulConfig {
 
     public static void toggleDisableNumberRounding() {
         disableNumberRounding = !disableNumberRounding;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableNumberRounding", disableNumberRounding);
         editor.apply();
@@ -786,7 +786,7 @@ public class UsefulConfig {
 
     public static void toggleDisableGreetingSticker() {
         disableGreetingSticker = !disableGreetingSticker;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableGreetingSticker", disableGreetingSticker);
         editor.apply();
@@ -794,7 +794,7 @@ public class UsefulConfig {
 
     public static void toggleDisableAppBarShadow() {
         disableAppBarShadow = !disableAppBarShadow;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableAppBarShadow", disableAppBarShadow);
         editor.apply();
@@ -802,7 +802,7 @@ public class UsefulConfig {
 
     public static void toggleMediaPreview() {
         mediaPreview = !mediaPreview;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("mediaPreview", mediaPreview);
         editor.apply();
@@ -810,7 +810,7 @@ public class UsefulConfig {
 
     public static void setIdType(int type) {
         idType = type;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("idType", idType);
         editor.apply();
@@ -818,7 +818,7 @@ public class UsefulConfig {
 
     public static void toggleAutoPauseVideo() {
         autoPauseVideo = !autoPauseVideo;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("autoPauseVideo", autoPauseVideo);
         editor.apply();
@@ -826,7 +826,7 @@ public class UsefulConfig {
 
     public static void toggleDisableProximityEvents() {
         disableProximityEvents = !disableProximityEvents;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableProximityEvents", disableProximityEvents);
         editor.apply();
@@ -834,7 +834,7 @@ public class UsefulConfig {
 
     public static void toggleMapDriftingFix() {
         mapDriftingFix = !mapDriftingFix;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("mapDriftingFix", mapDriftingFix);
         editor.apply();
@@ -842,7 +842,7 @@ public class UsefulConfig {
 
     public static void toggleVoiceEnhancements() {
         voiceEnhancements = !voiceEnhancements;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("voiceEnhancements", voiceEnhancements);
         editor.apply();
@@ -850,7 +850,7 @@ public class UsefulConfig {
 
     public static void toggleDisabledInstantCamera() {
         disableInstantCamera = !disableInstantCamera;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableInstantCamera", disableInstantCamera);
         editor.apply();
@@ -858,7 +858,7 @@ public class UsefulConfig {
 
     public static void toggleTryToOpenAllLinksInIV() {
         tryToOpenAllLinksInIV = !tryToOpenAllLinksInIV;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("tryToOpenAllLinksInIV", tryToOpenAllLinksInIV);
         editor.apply();
@@ -866,7 +866,7 @@ public class UsefulConfig {
 
     public static void toggleFormatTimeWithSeconds() {
         formatTimeWithSeconds = !formatTimeWithSeconds;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("formatTimeWithSeconds", formatTimeWithSeconds);
         editor.apply();
@@ -874,7 +874,7 @@ public class UsefulConfig {
 
     public static void toggleAccentAsNotificationColor() {
         accentAsNotificationColor = !accentAsNotificationColor;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("accentAsNotificationColor", accentAsNotificationColor);
         editor.apply();
@@ -882,7 +882,7 @@ public class UsefulConfig {
 
     public static void toggleSilenceNonContacts() {
         silenceNonContacts = !silenceNonContacts;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("silenceNonContacts", silenceNonContacts);
         editor.apply();
@@ -890,7 +890,7 @@ public class UsefulConfig {
 
     public static void toggleDisableJumpToNextChannel() {
         disableJumpToNextChannel = !disableJumpToNextChannel;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableJumpToNextChannel", disableJumpToNextChannel);
         editor.apply();
@@ -898,7 +898,7 @@ public class UsefulConfig {
 
     public static void toggleShowNoQuoteForward() {
         showNoQuoteForward = !showNoQuoteForward;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showNoQuoteForward", showNoQuoteForward);
         editor.apply();
@@ -906,7 +906,7 @@ public class UsefulConfig {
 
     public static void toggleShowCopyPhoto() {
         showCopyPhoto = !showCopyPhoto;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showCopyPhoto", showCopyPhoto);
         editor.apply();
@@ -914,7 +914,7 @@ public class UsefulConfig {
 
     public static void toggleAutoTranslate() {
         autoTranslate = !autoTranslate;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("autoTranslate", autoTranslate);
         editor.apply();
@@ -922,7 +922,7 @@ public class UsefulConfig {
 
     public static void toggleDisableVoiceMessageAutoPlay() {
         disableVoiceMessageAutoPlay = !disableVoiceMessageAutoPlay;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableVoiceMessageAutoPlay", disableVoiceMessageAutoPlay);
         editor.apply();
@@ -930,7 +930,7 @@ public class UsefulConfig {
 
     public static void toggleUnmuteVideosWithVolumeButtons() {
         unmuteVideosWithVolumeButtons = !unmuteVideosWithVolumeButtons;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("unmuteVideosWithVolumeButtons", unmuteVideosWithVolumeButtons);
         editor.apply();
@@ -938,7 +938,7 @@ public class UsefulConfig {
 
     public static void setMaxRecentStickers(int size) {
         maxRecentStickers = size;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("usefulconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("maxRecentStickers", maxRecentStickers);
         editor.apply();
