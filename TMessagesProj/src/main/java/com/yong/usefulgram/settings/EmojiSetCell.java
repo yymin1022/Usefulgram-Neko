@@ -28,7 +28,7 @@ import org.telegram.ui.Components.CheckBox2;
 import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.LayoutHelper;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.EmojiHelper;
 
 @SuppressLint("ViewConstructor")
@@ -114,7 +114,7 @@ public class EmojiSetCell extends FrameLayout {
             setPackPreview(pack);
         } else {
             textView.setText(LocaleController.getString(R.string.EmojiSets));
-            if (NekoConfig.useSystemEmoji) {
+            if (UsefulConfig.useSystemEmoji) {
                 valueTextView.setText(EmojiHelper.getInstance().getSelectedPackName(), animated);
                 imageView.setImageBitmap(EmojiHelper.getInstance().getSystemEmojiPreview());
             } else if (emojiPackInfo == null) {

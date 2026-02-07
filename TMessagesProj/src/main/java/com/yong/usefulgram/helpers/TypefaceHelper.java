@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class TypefaceHelper {
 
@@ -116,7 +116,7 @@ public class TypefaceHelper {
 
     public static boolean isMediumWeightSupported() {
         if (mediumWeightSupported == null) {
-            mediumWeightSupported = !NekoConfig.forceFontWeightFallback && testTypeface(createTypeface(true, false));
+            mediumWeightSupported = !UsefulConfig.forceFontWeightFallback && testTypeface(createTypeface(true, false));
             FileLog.d("mediumWeightSupported = " + mediumWeightSupported);
         }
         return mediumWeightSupported;

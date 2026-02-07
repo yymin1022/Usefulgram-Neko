@@ -15,7 +15,7 @@ import org.telegram.ui.ActionBar.Theme;
 import java.util.Arrays;
 import java.util.Collection;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class ForwardItem {
     public static final int ID_FORWARD = -100;
@@ -106,11 +106,11 @@ public class ForwardItem {
 
     public static int getLastForwardOption(boolean hasCaption) {
         var lastOption = ForwardItem.lastForwardOption;
-        if (NekoConfig.showNoQuoteForward && lastOption == ID_FORWARD_NOQUOTE) {
+        if (UsefulConfig.showNoQuoteForward && lastOption == ID_FORWARD_NOQUOTE) {
             return ID_FORWARD;
         }
         if (!hasCaption && lastOption == ID_FORWARD_NOCAPTION) {
-            return NekoConfig.showNoQuoteForward ? ID_FORWARD : ID_FORWARD_NOQUOTE;
+            return UsefulConfig.showNoQuoteForward ? ID_FORWARD : ID_FORWARD_NOQUOTE;
         }
         return lastOption;
     }

@@ -250,7 +250,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.yong.usefulgram.BackButtonMenuRecent;
 import com.yong.usefulgram.forward.ForwardContext;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.forward.SendOptionsMenuLayout;
 import com.yong.usefulgram.helpers.PasscodeHelper;
 
@@ -2292,7 +2292,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                 ((DialogCell) view).startOutAnimation();
                                 parentPage.archivePullViewState = ARCHIVE_ITEM_STATE_SHOWED;
 
-                                if (NekoConfig.openArchiveOnPull) {
+                                if (UsefulConfig.openArchiveOnPull) {
                                     AndroidUtilities.runOnUIThread(() -> {
                                         // Open the folder.
                                         // Delay was taken from PullForegroundDrawable::startOutAnimation().
@@ -3688,15 +3688,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     showDeleteAlert(getMessagesController().getDialogFilters().get(id));
                 }
 
-                private int lastTitleType = NekoConfig.tabsTitleType;
+                private int lastTitleType = UsefulConfig.tabsTitleType;
                 private int selectedTabId = -1;
 
                 @Override
                 public void onTabSelected(FilterTabsView.Tab tab, boolean forward, boolean animated) {
-                    if (NekoConfig.tabsTitleType != NekoConfig.TITLE_TYPE_ICON) {
-                        if (lastTitleType == NekoConfig.TITLE_TYPE_ICON) {
+                    if (UsefulConfig.tabsTitleType != UsefulConfig.TITLE_TYPE_ICON) {
+                        if (lastTitleType == UsefulConfig.TITLE_TYPE_ICON) {
                             actionBar.setTitle(actionBarDefaultTitle);
-                            lastTitleType = NekoConfig.tabsTitleType;
+                            lastTitleType = UsefulConfig.tabsTitleType;
                         }
                         return;
                     }
@@ -6967,13 +6967,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 filterTabsView.removeTabs();
                 for (int a = 0, N = filters.size(); a < N; a++) {
                     if (filters.get(a).isDefault()) {
-                        if (!NekoConfig.hideAllTab) filterTabsView.addTab(a, 0, LocaleController.getString(R.string.FilterAllChats), "\uD83D\uDCAC", null, false, true, filters.get(a).locked);
+                        if (!UsefulConfig.hideAllTab) filterTabsView.addTab(a, 0, LocaleController.getString(R.string.FilterAllChats), "\uD83D\uDCAC", null, false, true, filters.get(a).locked);
                     } else {
                         final MessagesController.DialogFilter filter = filters.get(a);
                         filterTabsView.addTab(a, filter.localId, filter.name, filter.emoticon == null ? "\uD83D\uDCC1" : filter.emoticon, filter.entities, filter.title_noanimate, false, filters.get(a).locked);
                     }
                 }
-                if (NekoConfig.hideAllTab && stableId <= 0) {
+                if (UsefulConfig.hideAllTab && stableId <= 0) {
                     id = filterTabsView.getFirstTabId();
                     updateCurrentTab = true;
                     viewPages[0].selectedType = id;

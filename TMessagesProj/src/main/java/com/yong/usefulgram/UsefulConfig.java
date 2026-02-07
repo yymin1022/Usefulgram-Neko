@@ -28,7 +28,7 @@ import com.yong.usefulgram.helpers.LensHelper;
 import com.yong.usefulgram.translator.Translator;
 import com.yong.usefulgram.translator.TranslatorApps;
 
-public class NekoConfig {
+public class UsefulConfig {
     //TODO: refactor
 
     public static final int TITLE_TYPE_TEXT = 0;

@@ -90,8 +90,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.yong.usefulgram.NekoConfig;
-import com.yong.usefulgram.location.NekoLocationSource;
+import com.yong.usefulgram.UsefulConfig;
+import com.yong.usefulgram.location.UsefulLocationSource;
 
 public class ChatAttachAlertLocationLayout extends ChatAttachAlert.AttachAlertLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -1619,8 +1619,8 @@ public class ChatAttachAlertLocationLayout extends ChatAttachAlert.AttachAlertLa
         for (int i = providers.size() - 1; i >= 0; i--) {
             l = lm.getLastKnownLocation(providers.get(i));
             if (l != null) {
-                if (NekoConfig.mapDriftingFix) {
-                    NekoLocationSource.transform(l);
+                if (UsefulConfig.mapDriftingFix) {
+                    UsefulLocationSource.transform(l);
                 }
                 break;
             }

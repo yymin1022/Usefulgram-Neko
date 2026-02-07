@@ -35,8 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.yong.usefulgram.NekoConfig;
-import com.yong.usefulgram.location.NekoLocationSource;
+import com.yong.usefulgram.UsefulConfig;
+import com.yong.usefulgram.location.UsefulLocationSource;
 
 public class GoogleMapsProvider implements IMapsProvider {
 
@@ -591,7 +591,7 @@ public class GoogleMapsProvider implements IMapsProvider {
         @Override
         public void getMapAsync(Consumer<IMap> callback) {
             mapView.getMapAsync(googleMap -> {
-                if (NekoConfig.mapDriftingFix) googleMap.setLocationSource(new NekoLocationSource(mapView.getContext()));
+                if (UsefulConfig.mapDriftingFix) googleMap.setLocationSource(new UsefulLocationSource(mapView.getContext()));
                 callback.accept(new GoogleMapImpl(googleMap));
                 findGlSurfaceView(mapView);
             });

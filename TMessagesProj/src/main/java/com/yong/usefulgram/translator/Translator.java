@@ -40,9 +40,9 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import app.nekogram.translator.Http429Exception;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.PopupHelper;
-import com.yong.usefulgram.settings.NekoLanguagesSelectActivity;
+import com.yong.usefulgram.settings.UsefulLanguagesSelectActivity;
 
 public class Translator {
 
@@ -71,10 +71,10 @@ public class Translator {
     }
 
     public static void showTranslateDialog(Context context, String query, ArrayList<TLRPC.MessageEntity> entities, boolean noforwards, BaseFragment fragment, Utilities.CallbackReturn<URLSpan, Boolean> onLinkPress, String sourceLanguage, View anchorView, Theme.ResourcesProvider resourcesProvider) {
-        if (NekoConfig.transType == NekoConfig.TRANS_TYPE_EXTERNAL) {
+        if (UsefulConfig.transType == UsefulConfig.TRANS_TYPE_EXTERNAL) {
             TranslatorApps.showExternalTranslateDialog(context, query, sourceLanguage, anchorView, resourcesProvider);
         } else {
-            TranslateAlert2.showAlert(context, fragment, UserConfig.selectedAccount, sourceLanguage, NekoConfig.translationTarget, query, entities, noforwards, onLinkPress, null, resourcesProvider);
+            TranslateAlert2.showAlert(context, fragment, UserConfig.selectedAccount, sourceLanguage, UsefulConfig.translationTarget, query, entities, noforwards, onLinkPress, null, resourcesProvider);
         }
     }
 
@@ -127,10 +127,10 @@ public class Translator {
 
     public static ArrayList<String> getRestrictedLanguages() {
         var languages = new ArrayList<String>();
-        if (NekoConfig.restrictedLanguages == null) {
+        if (UsefulConfig.restrictedLanguages == null) {
             languages.add(stripLanguageCode(getCurrentTargetLanguage()));
         } else {
-            languages.addAll(NekoConfig.restrictedLanguages);
+            languages.addAll(UsefulConfig.restrictedLanguages);
         }
         return languages;
     }
@@ -139,10 +139,10 @@ public class Translator {
         var currentTargetLanguage = stripLanguageCode(getCurrentTargetLanguage());
         var languages = restrictedLanguages.stream().filter(s -> !s.equals(currentTargetLanguage)).collect(Collectors.toSet());
         if (!restrictedLanguages.isEmpty() && languages.isEmpty()) {
-            NekoConfig.saveRestrictedLanguages(null);
+            UsefulConfig.saveRestrictedLanguages(null);
             return;
         }
-        NekoConfig.saveRestrictedLanguages(new HashSet<>(restrictedLanguages));
+        UsefulConfig.saveRestrictedLanguages(new HashSet<>(restrictedLanguages));
     }
 
     public static Pair<ArrayList<String>, ArrayList<String>> getProviders() {
@@ -186,12 +186,12 @@ public class Translator {
             targetLanguages.add(0, "app");
             names.add(0, LocaleController.getString(R.string.TranslationTargetApp));
 
-            PopupHelper.show(names, LocaleController.getString(R.string.TranslationTarget), targetLanguages.indexOf(NekoConfig.translationTarget), fragment.getParentActivity(), view, i -> {
-                NekoConfig.setTranslationTarget(targetLanguages.get(i));
+            PopupHelper.show(names, LocaleController.getString(R.string.TranslationTarget), targetLanguages.indexOf(UsefulConfig.translationTarget), fragment.getParentActivity(), view, i -> {
+                UsefulConfig.setTranslationTarget(targetLanguages.get(i));
                 if (callback != null) callback.run();
             }, resourcesProvider);
         } else {
-            fragment.presentFragment(new NekoLanguagesSelectActivity(NekoLanguagesSelectActivity.TYPE_TARGET, whiteActionBar));
+            fragment.presentFragment(new UsefulLanguagesSelectActivity(UsefulLanguagesSelectActivity.TYPE_TARGET, whiteActionBar));
         }
     }
 
@@ -199,19 +199,19 @@ public class Translator {
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayList<Integer> types = new ArrayList<>();
         arrayList.add(LocaleController.getString(R.string.TranslatorTypeUseful));
-        types.add(NekoConfig.TRANS_TYPE_NEKO);
+        types.add(UsefulConfig.TRANS_TYPE_NEKO);
         arrayList.add(LocaleController.getString(R.string.TranslatorTypeTG));
-        types.add(NekoConfig.TRANS_TYPE_TG);
+        types.add(UsefulConfig.TRANS_TYPE_TG);
         arrayList.add(LocaleController.getString(R.string.TranslatorTypeExternal));
-        types.add(NekoConfig.TRANS_TYPE_EXTERNAL);
-        PopupHelper.show(arrayList, LocaleController.getString(R.string.TranslatorType), types.indexOf(NekoConfig.transType), context, view, i -> {
-            NekoConfig.setTransType(types.get(i));
+        types.add(UsefulConfig.TRANS_TYPE_EXTERNAL);
+        PopupHelper.show(arrayList, LocaleController.getString(R.string.TranslatorType), types.indexOf(UsefulConfig.transType), context, view, i -> {
+            UsefulConfig.setTransType(types.get(i));
             if (callback != null) callback.run();
         }, resourcesProvider);
     }
 
     public static void showTranslationProviderSelector(Context context, View view, MessagesStorage.BooleanCallback callback, Theme.ResourcesProvider resourcesProvider) {
-        if (NekoConfig.transType == NekoConfig.TRANS_TYPE_EXTERNAL) {
+        if (UsefulConfig.transType == UsefulConfig.TRANS_TYPE_EXTERNAL) {
             var app = TranslatorApps.getTranslatorApp();
             var apps = TranslatorApps.getTranslatorApps();
             if (apps.isEmpty()) {
@@ -230,26 +230,26 @@ public class Translator {
         if (names == null || types == null) {
             return;
         }
-        PopupHelper.show(names, LocaleController.getString(R.string.TranslationProvider), types.indexOf(NekoConfig.translationProvider), context, view, i -> {
+        PopupHelper.show(names, LocaleController.getString(R.string.TranslationProvider), types.indexOf(UsefulConfig.translationProvider), context, view, i -> {
             var translator = getTranslator(types.get(i));
-            String targetLanguage = getTargetLanguage(translator, NekoConfig.translationTarget);
+            String targetLanguage = getTargetLanguage(translator, UsefulConfig.translationTarget);
 
             if (translator.supportLanguage(targetLanguage)) {
-                NekoConfig.setTranslationProvider(types.get(i));
+                UsefulConfig.setTranslationProvider(types.get(i));
                 if (callback != null) callback.run(true);
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context, resourcesProvider)
                         .setMessage(LocaleController.getString(R.string.TranslateApiUnsupported));
-                if ("app".equals(NekoConfig.translationTarget)) {
+                if ("app".equals(UsefulConfig.translationTarget)) {
                     builder.setPositiveButton(LocaleController.getString(R.string.UseGoogleTranslate), (dialog, which) -> {
-                        NekoConfig.setTranslationProvider(PROVIDER_GOOGLE);
+                        UsefulConfig.setTranslationProvider(PROVIDER_GOOGLE);
                         if (callback != null) callback.run(true);
                     });
                     builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                 } else if (translator.supportLanguage(getCurrentAppLanguage(translator))) {
                     builder.setPositiveButton(LocaleController.getString(R.string.ResetLanguage), (dialog, which) -> {
-                        NekoConfig.setTranslationProvider(types.get(i));
-                        NekoConfig.setTranslationTarget("app");
+                        UsefulConfig.setTranslationProvider(types.get(i));
+                        UsefulConfig.setTranslationTarget("app");
                         if (callback != null) callback.run(false);
                     });
                     builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
@@ -266,7 +266,7 @@ public class Translator {
     }
 
     private static ITranslator getCurrentTranslator() {
-        return getTranslator(NekoConfig.translationProvider);
+        return getTranslator(UsefulConfig.translationProvider);
     }
 
     private static ITranslator getTranslator(String type) {
@@ -387,7 +387,7 @@ public class Translator {
     }
 
     public static String getCurrentTargetLanguage() {
-        return getTargetLanguage(getCurrentTranslator(), NekoConfig.translationTarget);
+        return getTargetLanguage(getCurrentTranslator(), UsefulConfig.translationTarget);
     }
 
     private record PollTranslateTask(ITranslator translator, TranslateController.PollText query,
@@ -443,7 +443,7 @@ public class Translator {
 
         @Override
         public TranslationResult call() throws Exception {
-            var key = Pair.create(query.text, tl + "|" + NekoConfig.translationProvider);
+            var key = Pair.create(query.text, tl + "|" + UsefulConfig.translationProvider);
             var cached = cache.get(key);
             if (cached != null) {
                 return cached;

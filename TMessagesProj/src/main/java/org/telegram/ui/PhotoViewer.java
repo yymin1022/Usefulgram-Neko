@@ -318,13 +318,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.forward.ForwardItem;
 import com.yong.usefulgram.helpers.LensHelper;
 import com.yong.usefulgram.helpers.MessageHelper;
 import com.yong.usefulgram.helpers.QrHelper;
 import com.yong.usefulgram.streaming.MediaStreamingProvider;
-import com.yong.usefulgram.translator.Translator;
 
 @SuppressLint("WrongConstant")
 @SuppressWarnings("unchecked")
@@ -5182,7 +5181,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         msgs.add(currentMessageObject);
                     }
 
-                    if ((isChannel || NekoConfig.quickForward) && msgs.size() <= 1) {
+                    if ((isChannel || UsefulConfig.quickForward) && msgs.size() <= 1) {
                         showShareAlert(msgs, id == gallery_menu_send_noquote, id == gallery_menu_send_nocaption);
                     } else if (msgs.size() > 1) {
                         boolean photos = true;
@@ -18477,7 +18476,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         if (photoPaintView != null) {
             photoPaintView.onResume();
         }
-        if (pausedOnPause && NekoConfig.autoPauseVideo && videoPlayer != null && !videoPlayer.isPlaying()) {
+        if (pausedOnPause && UsefulConfig.autoPauseVideo && videoPlayer != null && !videoPlayer.isPlaying()) {
             pausedOnPause = false;
             videoPlayer.play();
         }
@@ -18496,7 +18495,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         if (videoPlayer != null && playerLooping) {
             videoPlayer.setLooping(allowLoopingOnPause());
         }
-        if (NekoConfig.autoPauseVideo && videoPlayer != null && videoPlayer.isPlaying()) {
+        if (UsefulConfig.autoPauseVideo && videoPlayer != null && videoPlayer.isPlaying()) {
             pausedOnPause = true;
             videoPlayer.pause();
         }

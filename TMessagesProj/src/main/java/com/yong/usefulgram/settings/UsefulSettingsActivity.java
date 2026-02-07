@@ -26,7 +26,7 @@ import com.yong.usefulgram.helpers.PasscodeHelper;
 import com.yong.usefulgram.helpers.remote.ConfigHelper;
 import com.yong.usefulgram.helpers.remote.UpdateHelper;
 
-public class NekoSettingsActivity extends BaseNekoSettingsActivity {
+public class UsefulSettingsActivity extends BaseUsefulSettingsActivity {
 
     private final List<ConfigHelper.News> news = ConfigHelper.getNews();
     private boolean checkingUpdate = false;
@@ -58,7 +58,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity {
 
         actionBar.createMenu()
                 .addItem(0, R.drawable.cloud_sync)
-                .setOnClickListener(v -> CloudSettingsHelper.getInstance().showDialog(NekoSettingsActivity.this));
+                .setOnClickListener(v -> CloudSettingsHelper.getInstance().showDialog(UsefulSettingsActivity.this));
 
         return fragmentView;
     }
@@ -66,21 +66,21 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity {
     @Override
     protected void onItemClick(View view, int position, float x, float y) {
         if (position == chatRow) {
-            presentFragment(new NekoChatSettingsActivity());
+            presentFragment(new UsefulChatSettingsActivity());
         } else if (position == generalRow) {
-            presentFragment(new NekoGeneralSettingsActivity());
+            presentFragment(new UsefulGeneralSettingsActivity());
         } else if (position == appearanceRow) {
-            presentFragment(new NekoAppearanceSettings());
+            presentFragment(new UsefulAppearanceSettings());
         } else if (position == passcodeRow) {
-            presentFragment(new NekoPasscodeSettingsActivity());
+            presentFragment(new UsefulPasscodeSettingsActivity());
         } else if (position == experimentRow) {
-            presentFragment(new NekoExperimentalSettingsActivity());
+            presentFragment(new UsefulExperimentalSettingsActivity());
         } else if (position == accessibilityRow) {
             presentFragment(new AccessibilitySettingsActivity());
         } else if (position == channelRow) {
             getMessagesController().openByUserName(LocaleController.getString(R.string.OfficialChannelUsername), this, 1);
         } else if (position == donateRow) {
-            presentFragment(new NekoDonateActivity());
+            presentFragment(new UsefulDonateActivity());
         } else if (position == translationRow) {
             Browser.openUrl(getParentActivity(), "https://neko.crowdin.com/nekogram");
         } else if (position == websiteRow) {

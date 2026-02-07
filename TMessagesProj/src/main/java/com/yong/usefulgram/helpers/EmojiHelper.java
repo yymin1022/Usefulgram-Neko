@@ -41,7 +41,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class EmojiHelper {
@@ -204,13 +204,13 @@ public class EmojiHelper {
     public void setEmojiPack(String pack, boolean manually) {
         emojiPack = pack;
         preferences.edit().putString("emoji_pack", pack).apply();
-        if (manually && NekoConfig.useSystemEmoji) {
-            NekoConfig.toggleUseSystemEmoji();
+        if (manually && UsefulConfig.useSystemEmoji) {
+            UsefulConfig.toggleUseSystemEmoji();
         }
     }
 
     public Typeface getCurrentTypeface() {
-        if (NekoConfig.useSystemEmoji) {
+        if (UsefulConfig.useSystemEmoji) {
             return getSystemEmojiTypeface();
         } else {
             return getSelectedTypeface();
@@ -244,7 +244,7 @@ public class EmojiHelper {
     }
 
     public String getSelectedPackName() {
-        if (NekoConfig.useSystemEmoji) return "System";
+        if (UsefulConfig.useSystemEmoji) return "System";
         return emojiPacksInfo
                 .stream()
                 .filter(emojiPackInfo -> Objects.equals(emojiPackInfo.packId, emojiPack))

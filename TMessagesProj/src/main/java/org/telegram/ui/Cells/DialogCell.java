@@ -139,7 +139,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Stack;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.MessageFilterHelper;
 
 public class DialogCell extends BaseCell implements StoriesListPlaceProvider.AvatarOverlaysView {
@@ -5265,7 +5265,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     }
 
     public void updateMessageThumbs() {
-        if (message == null || !NekoConfig.mediaPreview) {
+        if (message == null || !UsefulConfig.mediaPreview) {
             return;
         }
         String restrictionReason = MessagesController.getInstance(message.currentAccount).getRestrictionReason(message.messageOwner.restriction_reason);

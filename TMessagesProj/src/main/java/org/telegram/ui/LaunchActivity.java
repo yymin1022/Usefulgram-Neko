@@ -260,14 +260,13 @@ import java.util.zip.ZipInputStream;
 
 import com.yong.usefulgram.Extra;
 import com.yong.usefulgram.forward.ForwardContext;
-import com.yong.usefulgram.NekoConfig;
-import com.yong.usefulgram.helpers.ApkInstaller;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.MonetHelper;
 import com.yong.usefulgram.helpers.SettingsHelper;
 import com.yong.usefulgram.helpers.UserHelper;
 import com.yong.usefulgram.helpers.remote.UpdateHelper;
-import com.yong.usefulgram.settings.NekoDonateActivity;
-import com.yong.usefulgram.settings.NekoSettingsActivity;
+import com.yong.usefulgram.settings.UsefulDonateActivity;
+import com.yong.usefulgram.settings.UsefulSettingsActivity;
 
 public class LaunchActivity extends BasePermissionsActivity implements INavigationLayout.INavigationLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, IPipActivity {
     public final static String EXTRA_FORCE_NOT_INTERNAL_APPS = "force_not_internal_apps";
@@ -1072,7 +1071,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
 
 
         //RestrictedLanguagesSelectActivity.checkRestrictedLanguages(false);
-        if (Build.VERSION.SDK_INT >= 34 && NekoConfig.predictiveBackAnimation) {
+        if (Build.VERSION.SDK_INT >= 34 && UsefulConfig.predictiveBackAnimation) {
             if (onBackAnimationCallback == null) {
                 onBackAnimationCallback =  new OnBackAnimationCallback() {
                     private boolean started = false;
@@ -3629,9 +3628,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 } else if (open_settings == 6) {
                     fragment = new EditWidgetActivity(open_widget_edit_type, open_widget_edit);
                 } else if (open_settings == 100) {
-                    fragment = new NekoSettingsActivity();
+                    fragment = new UsefulSettingsActivity();
                 } else if (open_settings == 101) {
-                    fragment = new NekoDonateActivity();
+                    fragment = new UsefulDonateActivity();
                 } else if (open_settings == 10) {
                     fragment = new LanguageSelectActivity();
                 } else if (open_settings == 11) {
@@ -8079,7 +8078,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 ForumUtilities.switchAllFragmentsInStackToForum(chatId, actionBarLayout);
             }
         } else if (id == NotificationCenter.dialogsNeedReload) {
-            if (NekoConfig.hideAllTab && drawerLayoutAdapter != null) {
+            if (UsefulConfig.hideAllTab && drawerLayoutAdapter != null) {
                 drawerLayoutAdapter.notifyDataSetChanged();
             }
         } else if (id == NotificationCenter.storiesEnabledUpdate) {
@@ -8800,7 +8799,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                         showVoiceChatTooltip(mute ? UndoView.ACTION_VOIP_SOUND_MUTED : UndoView.ACTION_VOIP_SOUND_UNMUTED);
                     }
                 }
-            } else if (NekoConfig.unmuteVideosWithVolumeButtons && !mainFragmentsStack.isEmpty() && (!PhotoViewer.hasInstance() || !PhotoViewer.getInstance().isVisible()) && event.getRepeatCount() == 0) {
+            } else if (UsefulConfig.unmuteVideosWithVolumeButtons && !mainFragmentsStack.isEmpty() && (!PhotoViewer.hasInstance() || !PhotoViewer.getInstance().isVisible()) && event.getRepeatCount() == 0) {
                 BaseFragment fragment = mainFragmentsStack.get(mainFragmentsStack.size() - 1);
                 if (fragment instanceof ChatActivity && !BaseFragment.hasSheets(fragment)) {
                     if (((ChatActivity) fragment).maybePlayVisibleVideo()) {

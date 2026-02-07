@@ -102,7 +102,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class GroupCreateActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, View.OnClickListener {
 
@@ -1632,7 +1632,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                 firstName = chat.title;
                 lastName = "";
             }
-            if (NekoConfig.nameOrder == 1) {
+            if (UsefulConfig.nameOrder == 1) {
                 if (!TextUtils.isEmpty(firstName)) {
                     return firstName.substring(0, 1).toUpperCase();
                 } else if (!TextUtils.isEmpty(lastName)) {

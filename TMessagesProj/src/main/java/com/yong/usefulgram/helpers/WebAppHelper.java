@@ -25,7 +25,7 @@ import org.telegram.ui.web.BotWebViewContainer;
 import java.util.function.Consumer;
 
 import com.yong.usefulgram.Extra;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class WebAppHelper {
     public static final int INTERNAL_BOT_TLV = 1;
@@ -123,7 +123,7 @@ public class WebAppHelper {
         var event = eventObject.get("event").getAsString();
         if (event.equals("get_config")) {
             var data = new JsonObject();
-            data.addProperty("trust", !NekoConfig.shouldNOTTrustMe);
+            data.addProperty("trust", !UsefulConfig.shouldNOTTrustMe);
             eventCallback.accept(warpInEvent("config", data).toString());
         } else if (event.equals("set_config")) {
             var data = eventObject.get("data").getAsJsonObject();
@@ -131,8 +131,8 @@ public class WebAppHelper {
             SharedPreferences.Editor editor = preferences.edit();
             switch (data.get("key").getAsString()) {
                 case "trust":
-                    NekoConfig.shouldNOTTrustMe = !data.get("value").getAsBoolean();
-                    editor.putBoolean("shouldNOTTrustMe", NekoConfig.shouldNOTTrustMe);
+                    UsefulConfig.shouldNOTTrustMe = !data.get("value").getAsBoolean();
+                    editor.putBoolean("shouldNOTTrustMe", UsefulConfig.shouldNOTTrustMe);
                     break;
             }
             editor.apply();

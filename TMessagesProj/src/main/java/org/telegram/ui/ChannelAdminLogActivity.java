@@ -155,7 +155,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import com.yong.usefulgram.MessageDetailsActivity;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.WebAppHelper;
 
 public class ChannelAdminLogActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
@@ -1796,7 +1796,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
             }
         }
 
-        if (NekoConfig.showMessageDetails && selectedObject.currentEvent != null) {
+        if (UsefulConfig.showMessageDetails && selectedObject.currentEvent != null) {
             items.add(LocaleController.getString(R.string.MessageDetails));
             options.add(OPTION_DETAILS);
             icons.add(R.drawable.msg_info);

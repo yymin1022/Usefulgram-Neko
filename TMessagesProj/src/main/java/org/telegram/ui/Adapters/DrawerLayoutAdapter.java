@@ -38,7 +38,7 @@ import org.telegram.ui.Components.SideMenultItemAnimator;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.PasscodeHelper;
 
 public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter {
@@ -253,8 +253,8 @@ public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter {
             return;
         }
         int eventType = Theme.getEventType();
-        if (NekoConfig.eventType > 0) {
-            eventType = NekoConfig.eventType - 1;
+        if (UsefulConfig.eventType > 0) {
+            eventType = UsefulConfig.eventType - 1;
         }
         int newGroupIcon;
         int newSecretIcon;
@@ -318,7 +318,7 @@ public class DrawerLayoutAdapter extends RecyclerListView.SelectionAdapter {
             showDivider = true;
         }
         MessagesController messagesController = MessagesController.getInstance(UserConfig.selectedAccount);
-        boolean hasArchive = NekoConfig.hideAllTab && messagesController.getDialogFilters().size() > 1 && messagesController.dialogs_dict.get(DialogObject.makeFolderDialogId(1)) != null;
+        boolean hasArchive = UsefulConfig.hideAllTab && messagesController.getDialogFilters().size() > 1 && messagesController.dialogs_dict.get(DialogObject.makeFolderDialogId(1)) != null;
         if (hasArchive) {
             items.add(new Item(20, LocaleController.getString(R.string.ArchivedChats), R.drawable.msg_archive));
             showDivider = true;

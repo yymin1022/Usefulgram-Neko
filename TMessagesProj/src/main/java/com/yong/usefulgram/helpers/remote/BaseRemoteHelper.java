@@ -21,7 +21,7 @@ import org.telegram.tgnet.TLRPC;
 import java.util.ArrayList;
 
 import com.yong.usefulgram.Extra;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.InlineBotHelper;
 
 public abstract class BaseRemoteHelper {
@@ -62,7 +62,7 @@ public abstract class BaseRemoteHelper {
                 " " +
                 LocaleController.getSystemLocaleStringIso639() +
                 " " +
-                NekoConfig.isChineseUser +
+                UsefulConfig.isChineseUser +
                 " " +
                 SharedConfig.pushString;
     }

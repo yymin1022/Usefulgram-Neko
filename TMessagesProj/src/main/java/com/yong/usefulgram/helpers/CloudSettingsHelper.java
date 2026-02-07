@@ -39,7 +39,7 @@ import java.util.Scanner;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class CloudSettingsHelper {
     private static final int CONFIG_VERSION = 0;
@@ -166,7 +166,7 @@ public class CloudSettingsHelper {
     }
 
     private void syncToCloud(Utilities.Callback2<Boolean, String> callback) {
-        String rawConfig = NekoConfig.exportConfigs();
+        String rawConfig = UsefulConfig.exportConfigs();
         String compressed = encodeConfig(rawConfig);
         getCloudStorageHelper().setItem("neko_settings", rawConfig.length() >= compressed.length() ? compressed : rawConfig, (res, error) -> {
             if (error == null) {
@@ -191,7 +191,7 @@ public class CloudSettingsHelper {
                         callback.run(false, "DECODE_FAILED");
                     } else {
                         try {
-                            NekoConfig.importConfigs(config);
+                            UsefulConfig.importConfigs(config);
                             localSyncedDate = System.currentTimeMillis();
                             preferences.edit().putLong("updated_at", localSyncedDate).apply();
                             callback.run(true, null);

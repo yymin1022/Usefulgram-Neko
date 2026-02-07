@@ -55,7 +55,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class LocaleController {
 
@@ -72,7 +72,7 @@ public class LocaleController {
 
     private volatile FastDateFormat formatterDay;
     public FastDateFormat getFormatterDay() {
-        if (NekoConfig.formatTimeWithSeconds) {
+        if (UsefulConfig.formatTimeWithSeconds) {
             return getFormatterDayWithSeconds();
         }
         if (formatterDay == null) {
@@ -2883,7 +2883,7 @@ public class LocaleController {
     }
 
     public static String formatShortNumber(int number, int[] rounded) {
-        if (NekoConfig.disableNumberRounding) {
+        if (UsefulConfig.disableNumberRounding) {
             if (rounded != null) {
                 rounded[0] = number;
             }

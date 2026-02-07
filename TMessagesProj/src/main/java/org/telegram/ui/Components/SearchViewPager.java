@@ -70,7 +70,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.forward.ForwardContext;
 import com.yong.usefulgram.forward.ForwardDrawable;
 import com.yong.usefulgram.forward.ForwardItem;
@@ -840,7 +840,7 @@ public class SearchViewPager extends ViewPagerFixed implements FilteredSearchVie
             gotoItem.setVisibility(View.VISIBLE);
             forwardItem.setVisibility(View.VISIBLE);
             ForwardItem.setupForwardItem(forwardItem, ForwardItem.hasCaption(selectedFiles.values()), null, this::onActionBarItemClick);
-            forwardNoQuoteItem.setVisibility(NekoConfig.showNoQuoteForward ? View.VISIBLE : View.GONE);
+            forwardNoQuoteItem.setVisibility(UsefulConfig.showNoQuoteForward ? View.VISIBLE : View.GONE);
             forwardNoQuoteItem.setIcon(new ForwardDrawable(ForwardItem.ID_FORWARD_NOQUOTE, false));
             deleteItem.setVisibility(View.VISIBLE);
         } else {
@@ -935,7 +935,7 @@ public class SearchViewPager extends ViewPagerFixed implements FilteredSearchVie
             ArrayList<MessageObject> fmessages = new ArrayList<>(selectedFiles.values());
             ForwardContext forwardContext = () -> fmessages;
             forwardContext.setForwardParams(id == forwardNoQuoteItemId, id == forwardNoQuoteItemId);
-            if (NekoConfig.quickForward) {
+            if (UsefulConfig.quickForward) {
                 forwardContext.openShareAlert(parent, null, () -> {
                     selectedFiles.clear();
                     showActionMode(false);

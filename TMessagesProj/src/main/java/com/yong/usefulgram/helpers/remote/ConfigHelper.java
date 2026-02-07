@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.yong.usefulgram.Extra;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class ConfigHelper extends BaseRemoteHelper {
     private static final String NEWS_METHOD = "get_config";
@@ -60,7 +60,7 @@ public class ConfigHelper extends BaseRemoteHelper {
         }
         ArrayList<News> newsItems = new ArrayList<>();
         config.news.forEach(news -> {
-            if (news.chineseOnly != null && news.chineseOnly && !NekoConfig.isChineseUser) {
+            if (news.chineseOnly != null && news.chineseOnly && !UsefulConfig.isChineseUser) {
                 return;
             }
             if (news.direct != null && news.direct && !Extra.isDirectApp()) {

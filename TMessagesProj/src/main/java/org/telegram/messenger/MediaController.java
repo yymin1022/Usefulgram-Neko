@@ -125,7 +125,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
 import com.yong.usefulgram.SaveToDownloadReceiver;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.VoiceEnhancementsHelper;
 
 public class MediaController implements AudioManager.OnAudioFocusChangeListener, NotificationCenter.NotificationCenterDelegate, SensorEventListener {
@@ -1381,7 +1381,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 }
                 proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
                 PowerManager powerManager = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-                proximityWakeLock = NekoConfig.disableProximityEvents ? null : powerManager.newWakeLock(0x00000020, "telegram:proximity_lock");
+                proximityWakeLock = UsefulConfig.disableProximityEvents ? null : powerManager.newWakeLock(0x00000020, "telegram:proximity_lock");
             } catch (Exception e) {
                 FileLog.e(e);
             }
@@ -1936,7 +1936,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     }
 
     private boolean isNearToSensor(float value) {
-        return !NekoConfig.disableProximityEvents && value < 5.0f && value != proximitySensor.getMaximumRange();
+        return !UsefulConfig.disableProximityEvents && value < 5.0f && value != proximitySensor.getMaximumRange();
     }
 
     public boolean isRecordingOrListeningByProximity() {

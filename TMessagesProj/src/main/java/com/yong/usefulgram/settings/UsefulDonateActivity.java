@@ -52,7 +52,6 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.DialogCell;
 import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
-import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.BulletinFactory;
 import org.telegram.ui.Components.ColoredImageSpan;
@@ -68,7 +67,7 @@ import java.util.stream.Collectors;
 
 import com.yong.usefulgram.helpers.remote.ConfigHelper;
 
-public class NekoDonateActivity extends BaseNekoSettingsActivity implements PurchasesUpdatedListener {
+public class UsefulDonateActivity extends BaseUsefulSettingsActivity implements PurchasesUpdatedListener {
     private static final List<String> SKUS = Arrays.asList("donate001", "donate002", "donate005", "donate010", "donate020", "donate050", "donate100");
     private final List<ConfigHelper.Crypto> cryptos = ConfigHelper.getCryptos();
 
@@ -188,7 +187,7 @@ public class NekoDonateActivity extends BaseNekoSettingsActivity implements Purc
                     .add(R.drawable.msg_qrcode, LocaleController.getString(R.string.GetQRCode), () -> QRCodeBottomSheet.showForCrypto(this, crypto))
                     .add(R.drawable.msg_copy, LocaleController.getString(R.string.Copy), () -> {
                         AndroidUtilities.addToClipboard(crypto.address);
-                        BulletinFactory.of(NekoDonateActivity.this).createCopyBulletin(LocaleController.getString(R.string.TextCopied)).show();
+                        BulletinFactory.of(UsefulDonateActivity.this).createCopyBulletin(LocaleController.getString(R.string.TextCopied)).show();
                     })
                     .setMinWidth(190)
                     .show();

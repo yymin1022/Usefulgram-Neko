@@ -125,7 +125,7 @@ import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.egl.EGLSurface;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 @SuppressLint("ViewConstructor")
 public class InstantCameraView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
@@ -733,7 +733,7 @@ public class InstantCameraView extends FrameLayout implements NotificationCenter
         selectedCamera = null;
         if (!fromPaused) {
             if (!useCamera2) {
-                isFrontface = !NekoConfig.rearVideoMessages;
+                isFrontface = !UsefulConfig.rearVideoMessages;
             }
             updateFlash();
             recordedTime = 0;

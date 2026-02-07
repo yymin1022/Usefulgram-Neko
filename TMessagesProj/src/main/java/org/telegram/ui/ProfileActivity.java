@@ -333,11 +333,11 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import com.yong.usefulgram.BackButtonMenuRecent;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.SimpleTextViewSwitcher;
 import com.yong.usefulgram.helpers.PopupHelper;
 import com.yong.usefulgram.helpers.remote.ConfigHelper;
-import com.yong.usefulgram.settings.NekoSettingsActivity;
+import com.yong.usefulgram.settings.UsefulSettingsActivity;
 import com.yong.usefulgram.translator.Translator;
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, SharedMediaLayout.SharedMediaPreloaderDelegate, ImageUpdater.ImageUpdaterDelegate, SharedMediaLayout.Delegate {
@@ -4428,7 +4428,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 builder1.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                 showDialog(builder1.create());
             } else if (position == nekoRow) {
-                presentFragment(new NekoSettingsActivity());
+                presentFragment(new UsefulSettingsActivity());
             } else if (position == languageRow) {
                 presentFragment(new LanguageSelectActivity());
             } else if (position == setUsernameRow) {
@@ -5567,7 +5567,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return false;
             }
         };
-        idTextView.setVisibility(NekoConfig.idType == NekoConfig.ID_TYPE_HIDDEN ? View.GONE : View.VISIBLE);
+        idTextView.setVisibility(UsefulConfig.idType == UsefulConfig.ID_TYPE_HIDDEN ? View.GONE : View.VISIBLE);
         idTextView.setFactory(() -> {
             SimpleTextView view = new SimpleTextView(context);
             view.setTextColor(applyPeerColor(getThemedColor(Theme.key_avatar_subtitleInProfileBlue), true, null));
@@ -8977,7 +8977,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 mediaCounterTextView.setTranslationY(onlineY);
                 updateCollectibleHint();
 
-                if (NekoConfig.idType != NekoConfig.ID_TYPE_HIDDEN && !searchMode) {
+                if (UsefulConfig.idType != UsefulConfig.ID_TYPE_HIDDEN && !searchMode) {
                     idTextView.setAlpha(diff);
                     idTextView.setTag(diff);
                     if (diff == 0) {
@@ -12752,7 +12752,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         nameTextView[1].setVisibility(View.VISIBLE);
         onlineTextView[1].setVisibility(View.VISIBLE);
         onlineTextView[3].setVisibility(View.VISIBLE);
-        if (NekoConfig.idType != NekoConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(View.VISIBLE);
+        if (UsefulConfig.idType != UsefulConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(View.VISIBLE);
 
         actionBar.onSearchFieldVisibilityChanged(searchTransitionProgress > 0.5f);
         int itemVisibility = searchTransitionProgress > 0.5f ? View.VISIBLE : View.GONE;
@@ -12888,7 +12888,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         nameTextView[1].setVisibility(hide);
         onlineTextView[1].setVisibility(hide);
         onlineTextView[3].setVisibility(hide);
-        if (NekoConfig.idType != NekoConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(hide);
+        if (UsefulConfig.idType != UsefulConfig.ID_TYPE_HIDDEN) idTextView.setVisibility(hide);
 
         if (otherItem != null) {
             otherItem.setAlpha(1f);
@@ -15842,7 +15842,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void updateIdText(boolean showDate, boolean animated, boolean chatFull) {
-        if (idTextView == null || NekoConfig.idType == NekoConfig.ID_TYPE_HIDDEN) {
+        if (idTextView == null || UsefulConfig.idType == UsefulConfig.ID_TYPE_HIDDEN) {
             return;
         }
         if (!showDate && isPulledDown && (!animated || chatFull)) {
@@ -15866,7 +15866,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             } else if (chatId != 0) {
                 var chat = getMessagesController().getChat(chatId);
                 if (chat == null) return;
-                if (NekoConfig.idType == NekoConfig.ID_TYPE_BOTAPI) {
+                if (UsefulConfig.idType == UsefulConfig.ID_TYPE_BOTAPI) {
                     if (ChatObject.isChannel(chat)) {
                         id = -1000000000000L - chat.id;
                     } else {

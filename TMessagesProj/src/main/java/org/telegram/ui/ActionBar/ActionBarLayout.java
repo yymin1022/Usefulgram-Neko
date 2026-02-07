@@ -86,7 +86,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.AnalyticsHelper;
 
 public class ActionBarLayout extends FrameLayout implements INavigationLayout, FloatingDebugProvider {
@@ -565,7 +565,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
 
         if (layerShadowDrawable == null) {
             layerShadowDrawable = getResources().getDrawable(R.drawable.layer_shadow);
-            headerShadowDrawable = NekoConfig.disableAppBarShadow ? null : getResources().getDrawable(R.drawable.header_shadow).mutate();
+            headerShadowDrawable = UsefulConfig.disableAppBarShadow ? null : getResources().getDrawable(R.drawable.header_shadow).mutate();
             scrimPaint = new Paint();
         }
 

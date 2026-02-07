@@ -15,9 +15,9 @@ import org.telegram.ui.Cells.TextSettingsCell;
 import java.util.ArrayList;
 
 import com.yong.usefulgram.helpers.PopupHelper;
-import com.yong.usefulgram.settings.BaseNekoSettingsActivity;
+import com.yong.usefulgram.settings.BaseUsefulSettingsActivity;
 
-public class AccessibilitySettingsActivity extends BaseNekoSettingsActivity {
+public class AccessibilitySettingsActivity extends BaseUsefulSettingsActivity {
     private static final ArrayList<String> SEEKBAR_TIME_VALUES = new ArrayList<>();
 
     private int seekbarHeadingRow;

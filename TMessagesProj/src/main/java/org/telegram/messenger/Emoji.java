@@ -44,7 +44,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.EmojiHelper;
 
 public class Emoji {
@@ -89,7 +89,7 @@ public class Emoji {
     public static boolean isSelectedEmojiPack;
 
     private static void reloadCache() {
-        isSelectedEmojiPack = EmojiHelper.getInstance().isSelectedEmojiPack() || NekoConfig.useSystemEmoji;
+        isSelectedEmojiPack = EmojiHelper.getInstance().isSelectedEmojiPack() || UsefulConfig.useSystemEmoji;
     }
 
     public static void reloadEmoji() {

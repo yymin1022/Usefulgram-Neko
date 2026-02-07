@@ -9,7 +9,7 @@ import org.telegram.messenger.R;
 
 import java.util.LinkedHashMap;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 
 public class FolderIconHelper {
@@ -111,7 +111,7 @@ public class FolderIconHelper {
     }
 
     public static int getPadding() {
-        if (NekoConfig.tabsTitleType == NekoConfig.TITLE_TYPE_MIX) {
+        if (UsefulConfig.tabsTitleType == UsefulConfig.TITLE_TYPE_MIX) {
             return AndroidUtilities.dp(6);
         }
         return 0;
@@ -119,14 +119,14 @@ public class FolderIconHelper {
 
     public static int getTotalIconWidth() {
         int result = 0;
-        if (NekoConfig.tabsTitleType != NekoConfig.TITLE_TYPE_TEXT) {
+        if (UsefulConfig.tabsTitleType != UsefulConfig.TITLE_TYPE_TEXT) {
             result = getIconWidth() + getPadding();
         }
         return result;
     }
 
     public static int getPaddingTab() {
-        if (NekoConfig.tabsTitleType != NekoConfig.TITLE_TYPE_ICON) {
+        if (UsefulConfig.tabsTitleType != UsefulConfig.TITLE_TYPE_ICON) {
             return AndroidUtilities.dp(32);
         }
         return AndroidUtilities.dp(16);

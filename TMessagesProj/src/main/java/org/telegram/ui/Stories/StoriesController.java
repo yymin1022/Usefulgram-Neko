@@ -87,7 +87,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class StoriesController {
 
@@ -281,7 +281,7 @@ public class StoriesController {
     }
 
     public boolean hasStories() {
-        if (NekoConfig.hideStories) {
+        if (UsefulConfig.hideStories) {
             return false;
         }
         return (dialogListStories != null && dialogListStories.size() > 0) || hasSelfStories();

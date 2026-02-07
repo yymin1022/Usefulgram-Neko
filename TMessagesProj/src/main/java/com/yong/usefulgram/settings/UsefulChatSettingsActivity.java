@@ -40,13 +40,13 @@ import org.telegram.ui.Components.SeekBarView;
 
 import java.util.ArrayList;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.EntitiesHelper;
 import com.yong.usefulgram.helpers.PopupHelper;
 import com.yong.usefulgram.helpers.VoiceEnhancementsHelper;
 import com.yong.usefulgram.helpers.WhisperHelper;
 
-public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implements NotificationCenter.NotificationCenterDelegate {
+public class UsefulChatSettingsActivity extends BaseUsefulSettingsActivity implements NotificationCenter.NotificationCenterDelegate {
 
     private ActionBarMenuItem resetItem;
     private StickerSizeCell stickerSizeCell;
@@ -113,7 +113,7 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
         resetItem.setTag(null);
         resetItem.setOnClickListener(v -> {
             AndroidUtilities.updateViewVisibilityAnimated(resetItem, false, 0.5f, true);
-            ValueAnimator animator = ValueAnimator.ofFloat(NekoConfig.stickerSize, 14.0f);
+            ValueAnimator animator = ValueAnimator.ofFloat(UsefulConfig.stickerSize, 14.0f);
             animator.setDuration(150);
             animator.setInterpolator(CubicBezierInterpolator.EASE_OUT_QUINT);
             animator.addUpdateListener(valueAnimator -> {
@@ -123,7 +123,7 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
             });
             animator.start();
         });
-        AndroidUtilities.updateViewVisibilityAnimated(resetItem, NekoConfig.stickerSize != 14.0f, 1f, false);
+        AndroidUtilities.updateViewVisibilityAnimated(resetItem, UsefulConfig.stickerSize != 14.0f, 1f, false);
 
         return fragmentView;
     }
@@ -131,78 +131,78 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
     @Override
     protected void onItemClick(View view, int position, float x, float y) {
         if (position == ignoreBlockedRow) {
-            NekoConfig.toggleIgnoreBlocked();
+            UsefulConfig.toggleIgnoreBlocked();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.ignoreBlocked);
+                ((TextCheckCell) view).setChecked(UsefulConfig.ignoreBlocked);
             }
         } else if (position == hideKeyboardOnChatScrollRow) {
-            NekoConfig.toggleHideKeyboardOnChatScroll();
+            UsefulConfig.toggleHideKeyboardOnChatScroll();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.hideKeyboardOnChatScroll);
+                ((TextCheckCell) view).setChecked(UsefulConfig.hideKeyboardOnChatScroll);
             }
         } else if (position == rearVideoMessagesRow) {
-            NekoConfig.toggleRearVideoMessages();
+            UsefulConfig.toggleRearVideoMessages();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.rearVideoMessages);
+                ((TextCheckCell) view).setChecked(UsefulConfig.rearVideoMessages);
             }
         } else if (position == confirmAVRow) {
-            NekoConfig.toggleConfirmAVMessage();
+            UsefulConfig.toggleConfirmAVMessage();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.confirmAVMessage);
+                ((TextCheckCell) view).setChecked(UsefulConfig.confirmAVMessage);
             }
         } else if (position == disableProximityEventsRow) {
-            NekoConfig.toggleDisableProximityEvents();
+            UsefulConfig.toggleDisableProximityEvents();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.disableProximityEvents);
+                ((TextCheckCell) view).setChecked(UsefulConfig.disableProximityEvents);
             }
             showRestartBulletin();
         } else if (position == tryToOpenAllLinksInIVRow) {
-            NekoConfig.toggleTryToOpenAllLinksInIV();
+            UsefulConfig.toggleTryToOpenAllLinksInIV();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.tryToOpenAllLinksInIV);
+                ((TextCheckCell) view).setChecked(UsefulConfig.tryToOpenAllLinksInIV);
             }
         } else if (position == autoPauseVideoRow) {
-            NekoConfig.toggleAutoPauseVideo();
+            UsefulConfig.toggleAutoPauseVideo();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.autoPauseVideo);
+                ((TextCheckCell) view).setChecked(UsefulConfig.autoPauseVideo);
             }
         } else if (position == disableJumpToNextRow) {
-            NekoConfig.toggleDisableJumpToNextChannel();
+            UsefulConfig.toggleDisableJumpToNextChannel();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.disableJumpToNextChannel);
+                ((TextCheckCell) view).setChecked(UsefulConfig.disableJumpToNextChannel);
             }
         } else if (position == disableGreetingStickerRow) {
-            NekoConfig.toggleDisableGreetingSticker();
+            UsefulConfig.toggleDisableGreetingSticker();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.disableGreetingSticker);
+                ((TextCheckCell) view).setChecked(UsefulConfig.disableGreetingSticker);
             }
         } else if (position == disableVoiceMessageAutoPlayRow) {
-            NekoConfig.toggleDisableVoiceMessageAutoPlay();
+            UsefulConfig.toggleDisableVoiceMessageAutoPlay();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.disableVoiceMessageAutoPlay);
+                ((TextCheckCell) view).setChecked(UsefulConfig.disableVoiceMessageAutoPlay);
             }
         } else if (position == unmuteVideosWithVolumeButtonsRow) {
-            NekoConfig.toggleUnmuteVideosWithVolumeButtons();
+            UsefulConfig.toggleUnmuteVideosWithVolumeButtons();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.unmuteVideosWithVolumeButtons);
+                ((TextCheckCell) view).setChecked(UsefulConfig.unmuteVideosWithVolumeButtons);
             }
         } else if (position == doubleTapActionRow) {
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<Integer> types = new ArrayList<>();
             arrayList.add(LocaleController.getString(R.string.Disable));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_NONE);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_NONE);
             arrayList.add(LocaleController.getString(R.string.Reactions));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_REACTION);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_REACTION);
             arrayList.add(LocaleController.getString(R.string.TranslateMessage));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_TRANSLATE);
             arrayList.add(LocaleController.getString(R.string.Reply));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_REPLY);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_REPLY);
             arrayList.add(LocaleController.getString(R.string.AddToSavedMessages));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_SAVE);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_SAVE);
             arrayList.add(LocaleController.getString(R.string.Repeat));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_REPEAT);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_REPEAT);
             arrayList.add(LocaleController.getString(R.string.Edit));
-            types.add(NekoConfig.DOUBLE_TAP_ACTION_EDIT);
+            types.add(UsefulConfig.DOUBLE_TAP_ACTION_EDIT);
 
             var context = getParentActivity();
             var builder = new AlertDialog.Builder(context, resourcesProvider);
@@ -232,19 +232,19 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                     var cell = new RadioColorCell(context, resourcesProvider);
                     cell.setPadding(AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4), 0);
                     cell.setTag(a);
-                    cell.setTextAndValue(arrayList.get(a), a == types.indexOf(out ? NekoConfig.doubleTapOutAction : NekoConfig.doubleTapInAction));
+                    cell.setTextAndValue(arrayList.get(a), a == types.indexOf(out ? UsefulConfig.doubleTapOutAction : UsefulConfig.doubleTapInAction));
                     cell.setBackground(Theme.createRadSelectorDrawable(Theme.getColor(Theme.key_listSelector, resourcesProvider), out ? AndroidUtilities.dp(6) : 0, out ? 0 : AndroidUtilities.dp(6), out ? 0 : AndroidUtilities.dp(6), out ? AndroidUtilities.dp(6) : 0));
                     layout.addView(cell);
                     cell.setOnClickListener(v -> {
                         var which = (Integer) v.getTag();
-                        var old = out ? NekoConfig.doubleTapOutAction : NekoConfig.doubleTapInAction;
+                        var old = out ? UsefulConfig.doubleTapOutAction : UsefulConfig.doubleTapInAction;
                         if (types.get(which) == old) {
                             return;
                         }
                         if (out) {
-                            NekoConfig.setDoubleTapOutAction(types.get(which));
+                            UsefulConfig.setDoubleTapOutAction(types.get(which));
                         } else {
-                            NekoConfig.setDoubleTapInAction(types.get(which));
+                            UsefulConfig.setDoubleTapInAction(types.get(which));
                         }
                         ((RadioColorCell) layout.getChildAt(types.indexOf(old))).setChecked(false, true);
                         cell.setChecked(true, true);
@@ -257,51 +257,51 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
             builder.setNegativeButton(LocaleController.getString(R.string.OK), null);
             builder.show();
         } else if (position == markdownEnableRow) {
-            NekoConfig.toggleDisableMarkdownByDefault();
+            UsefulConfig.toggleDisableMarkdownByDefault();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(!NekoConfig.disableMarkdownByDefault);
+                ((TextCheckCell) view).setChecked(!UsefulConfig.disableMarkdownByDefault);
             }
         } else if (position > messageMenuRow && position < messageMenu2Row) {
             TextCheckbox2Cell cell = ((TextCheckbox2Cell) view);
             int menuPosition = position - messageMenuRow - 1;
             if (menuPosition == 0) {
-                NekoConfig.toggleShowDeleteDownloadedFile();
-                cell.setChecked(NekoConfig.showDeleteDownloadedFile);
+                UsefulConfig.toggleShowDeleteDownloadedFile();
+                cell.setChecked(UsefulConfig.showDeleteDownloadedFile);
             } else if (menuPosition == 1) {
-                NekoConfig.toggleShowNoQuoteForward();
-                cell.setChecked(NekoConfig.showNoQuoteForward);
+                UsefulConfig.toggleShowNoQuoteForward();
+                cell.setChecked(UsefulConfig.showNoQuoteForward);
             } else if (menuPosition == 2) {
-                NekoConfig.toggleShowAddToSavedMessages();
-                cell.setChecked(NekoConfig.showAddToSavedMessages);
+                UsefulConfig.toggleShowAddToSavedMessages();
+                cell.setChecked(UsefulConfig.showAddToSavedMessages);
             } else if (menuPosition == 3) {
-                NekoConfig.toggleShowRepeat();
-                cell.setChecked(NekoConfig.showRepeat);
+                UsefulConfig.toggleShowRepeat();
+                cell.setChecked(UsefulConfig.showRepeat);
             } else if (menuPosition == 4) {
-                NekoConfig.toggleShowTranslate();
-                cell.setChecked(NekoConfig.showTranslate);
+                UsefulConfig.toggleShowTranslate();
+                cell.setChecked(UsefulConfig.showTranslate);
             } else if (menuPosition == 5) {
-                NekoConfig.toggleShowReport();
-                cell.setChecked(NekoConfig.showReport);
+                UsefulConfig.toggleShowReport();
+                cell.setChecked(UsefulConfig.showReport);
             } else if (menuPosition == 6) {
-                NekoConfig.toggleShowMessageDetails();
-                cell.setChecked(NekoConfig.showMessageDetails);
+                UsefulConfig.toggleShowMessageDetails();
+                cell.setChecked(UsefulConfig.showMessageDetails);
             } else if (menuPosition == 7) {
-                NekoConfig.toggleShowCopyPhoto();
-                cell.setChecked(NekoConfig.showCopyPhoto);
+                UsefulConfig.toggleShowCopyPhoto();
+                cell.setChecked(UsefulConfig.showCopyPhoto);
             } else if (menuPosition == 8) {
-                NekoConfig.toggleShowSetReminder();
-                cell.setChecked(NekoConfig.showSetReminder);
+                UsefulConfig.toggleShowSetReminder();
+                cell.setChecked(UsefulConfig.showSetReminder);
             } else if (menuPosition == 9) {
-                NekoConfig.toggleShowQrCode();
-                cell.setChecked(NekoConfig.showQrCode);
+                UsefulConfig.toggleShowQrCode();
+                cell.setChecked(UsefulConfig.showQrCode);
             } else if (menuPosition == 10) {
-                NekoConfig.toggleShowOpenIn();
-                cell.setChecked(NekoConfig.showOpenIn);
+                UsefulConfig.toggleShowOpenIn();
+                cell.setChecked(UsefulConfig.showOpenIn);
             }
         } else if (position == voiceEnhancementsRow) {
-            NekoConfig.toggleVoiceEnhancements();
+            UsefulConfig.toggleVoiceEnhancements();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.voiceEnhancements);
+                ((TextCheckCell) view).setChecked(UsefulConfig.voiceEnhancements);
             }
         } else if (position == maxRecentStickersRow) {
             int[] counts = {20, 30, 40, 50, 80, 100, 120, 150, 180, 200};
@@ -311,25 +311,25 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                     types.add(String.valueOf(count));
                 }
             }
-            PopupHelper.show(types, LocaleController.getString(R.string.MaxRecentStickers), types.indexOf(String.valueOf(NekoConfig.maxRecentStickers)), getParentActivity(), view, i -> {
-                NekoConfig.setMaxRecentStickers(Integer.parseInt(types.get(i)));
+            PopupHelper.show(types, LocaleController.getString(R.string.MaxRecentStickers), types.indexOf(String.valueOf(UsefulConfig.maxRecentStickers)), getParentActivity(), view, i -> {
+                UsefulConfig.setMaxRecentStickers(Integer.parseInt(types.get(i)));
                 listAdapter.notifyItemChanged(maxRecentStickersRow, PARTIAL);
             }, resourcesProvider);
         } else if (position == hideTimeOnStickerRow) {
-            NekoConfig.toggleHideTimeOnSticker();
+            UsefulConfig.toggleHideTimeOnSticker();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.hideTimeOnSticker);
+                ((TextCheckCell) view).setChecked(UsefulConfig.hideTimeOnSticker);
             }
             stickerSizeCell.invalidate();
         } else if (position == markdownParserRow) {
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.add("Nekogram");
             arrayList.add("Telegram");
-            boolean oldParser = NekoConfig.newMarkdownParser;
-            PopupHelper.show(arrayList, LocaleController.getString(R.string.MarkdownParser), NekoConfig.newMarkdownParser ? 0 : 1, getParentActivity(), view, i -> {
-                NekoConfig.setNewMarkdownParser(i == 0);
+            boolean oldParser = UsefulConfig.newMarkdownParser;
+            PopupHelper.show(arrayList, LocaleController.getString(R.string.MarkdownParser), UsefulConfig.newMarkdownParser ? 0 : 1, getParentActivity(), view, i -> {
+                UsefulConfig.setNewMarkdownParser(i == 0);
                 listAdapter.notifyItemChanged(markdownParserRow, PARTIAL);
-                if (oldParser != NekoConfig.newMarkdownParser) {
+                if (oldParser != UsefulConfig.newMarkdownParser) {
                     if (oldParser) {
                         listAdapter.notifyItemRemoved(markdownParseLinksRow);
                         updateRows();
@@ -341,51 +341,51 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                 }
             }, resourcesProvider);
         } else if (position == markdownParseLinksRow) {
-            NekoConfig.toggleMarkdownParseLinks();
+            UsefulConfig.toggleMarkdownParseLinks();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.markdownParseLinks);
+                ((TextCheckCell) view).setChecked(UsefulConfig.markdownParseLinks);
             }
             listAdapter.notifyItemChanged(markdown2Row);
         } else if (position == quickForwardRow) {
-            NekoConfig.toggleQuickForward();
+            UsefulConfig.toggleQuickForward();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.quickForward);
+                ((TextCheckCell) view).setChecked(UsefulConfig.quickForward);
             }
         } else if (position == reducedColorsRow) {
-            NekoConfig.toggleReducedColors();
+            UsefulConfig.toggleReducedColors();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.reducedColors);
+                ((TextCheckCell) view).setChecked(UsefulConfig.reducedColors);
             }
             stickerSizeCell.invalidate();
         } else if (position == showTimeHintRow) {
-            NekoConfig.toggleShowTimeHint();
+            UsefulConfig.toggleShowTimeHint();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.showTimeHint);
+                ((TextCheckCell) view).setChecked(UsefulConfig.showTimeHint);
             }
         } else if (position == transcribeProviderRow) {
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<Integer> types = new ArrayList<>();
             arrayList.add(LocaleController.getString(R.string.TranscribeProviderAuto));
-            types.add(NekoConfig.TRANSCRIBE_AUTO);
+            types.add(UsefulConfig.TRANSCRIBE_AUTO);
             arrayList.add(LocaleController.getString(R.string.TelegramPremium));
-            types.add(NekoConfig.TRANSCRIBE_PREMIUM);
+            types.add(UsefulConfig.TRANSCRIBE_PREMIUM);
             arrayList.add(LocaleController.getString(R.string.TranscribeProviderWorkersAI));
-            types.add(NekoConfig.TRANSCRIBE_WORKERSAI);
-            PopupHelper.show(arrayList, LocaleController.getString(R.string.TranscribeProviderShort), types.indexOf(NekoConfig.transcribeProvider), getParentActivity(), view, i -> {
-                NekoConfig.setTranscribeProvider(types.get(i));
+            types.add(UsefulConfig.TRANSCRIBE_WORKERSAI);
+            PopupHelper.show(arrayList, LocaleController.getString(R.string.TranscribeProviderShort), types.indexOf(UsefulConfig.transcribeProvider), getParentActivity(), view, i -> {
+                UsefulConfig.setTranscribeProvider(types.get(i));
                 listAdapter.notifyItemChanged(transcribeProviderRow, PARTIAL);
             }, resourcesProvider);
         } else if (position == cfCredentialsRow) {
             WhisperHelper.showCfCredentialsDialog(this);
         } else if (position == preferOriginalQualityRow) {
-            NekoConfig.togglePreferOriginalQuality();
+            UsefulConfig.togglePreferOriginalQuality();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.preferOriginalQuality);
+                ((TextCheckCell) view).setChecked(UsefulConfig.preferOriginalQuality);
             }
         } else if (position == hideChannelBottomButtonsRow) {
-            NekoConfig.toggleHideChannelBottomButtons();
+            UsefulConfig.toggleHideChannelBottomButtons();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.hideChannelBottomButtons);
+                ((TextCheckCell) view).setChecked(UsefulConfig.hideChannelBottomButtons);
             }
         }
     }
@@ -430,7 +430,7 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
         markdownRow = addRow("markdown");
         markdownEnableRow = addRow("markdownEnableRow");
         markdownParserRow = addRow("markdownParserRow");
-        markdownParseLinksRow = NekoConfig.newMarkdownParser ? addRow("markdownParseLinksRow") : -1;
+        markdownParseLinksRow = UsefulConfig.newMarkdownParser ? addRow("markdownParseLinksRow") : -1;
         markdown2Row = addRow();
 
         mediaRow = addRow("media");
@@ -495,16 +495,16 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                     AndroidUtilities.updateViewVisibilityAnimated(resetItem, true, 0.5f, true);
                 }
             }, 2, 20, LocaleController.getString(R.string.StickerSize), LocaleController.getString(R.string.StickerSizeLeft), LocaleController.getString(R.string.StickerSizeRight), resourcesProvider);
-            sizeBar.setValue(NekoConfig.stickerSize);
+            sizeBar.setValue(UsefulConfig.stickerSize);
             addView(sizeBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-            messagesCell = new StickerSizePreviewMessagesCell(context, NekoChatSettingsActivity.this);
+            messagesCell = new StickerSizePreviewMessagesCell(context, UsefulChatSettingsActivity.this);
             messagesCell.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
             addView(messagesCell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 112, 0, 0));
         }
 
         public void setValue(float value) {
-            NekoConfig.setStickerSize(value);
+            UsefulConfig.setStickerSize(value);
             sizeBar.setValue(value);
             messagesCell.invalidate();
         }
@@ -668,17 +668,17 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
 
         public String getDoubleTapActionText(int action) {
             return switch (action) {
-                case NekoConfig.DOUBLE_TAP_ACTION_REACTION ->
+                case UsefulConfig.DOUBLE_TAP_ACTION_REACTION ->
                         LocaleController.getString(R.string.Reactions);
-                case NekoConfig.DOUBLE_TAP_ACTION_TRANSLATE ->
+                case UsefulConfig.DOUBLE_TAP_ACTION_TRANSLATE ->
                         LocaleController.getString(R.string.TranslateMessage);
-                case NekoConfig.DOUBLE_TAP_ACTION_REPLY ->
+                case UsefulConfig.DOUBLE_TAP_ACTION_REPLY ->
                         LocaleController.getString(R.string.Reply);
-                case NekoConfig.DOUBLE_TAP_ACTION_SAVE ->
+                case UsefulConfig.DOUBLE_TAP_ACTION_SAVE ->
                         LocaleController.getString(R.string.AddToSavedMessages);
-                case NekoConfig.DOUBLE_TAP_ACTION_REPEAT ->
+                case UsefulConfig.DOUBLE_TAP_ACTION_REPEAT ->
                         LocaleController.getString(R.string.Repeat);
-                case NekoConfig.DOUBLE_TAP_ACTION_EDIT -> LocaleController.getString(R.string.Edit);
+                case UsefulConfig.DOUBLE_TAP_ACTION_EDIT -> LocaleController.getString(R.string.Edit);
                 default -> LocaleController.getString(R.string.Disable);
             };
         }
@@ -689,19 +689,19 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                 case TYPE_SETTINGS: {
                     TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     if (position == doubleTapActionRow) {
-                        var value = NekoConfig.doubleTapInAction == NekoConfig.doubleTapOutAction ?
-                                getDoubleTapActionText(NekoConfig.doubleTapInAction) :
-                                getDoubleTapActionText(NekoConfig.doubleTapInAction) + ", " + getDoubleTapActionText(NekoConfig.doubleTapOutAction);
+                        var value = UsefulConfig.doubleTapInAction == UsefulConfig.doubleTapOutAction ?
+                                getDoubleTapActionText(UsefulConfig.doubleTapInAction) :
+                                getDoubleTapActionText(UsefulConfig.doubleTapInAction) + ", " + getDoubleTapActionText(UsefulConfig.doubleTapOutAction);
                         textCell.setTextAndValue(LocaleController.getString(R.string.DoubleTapAction), value, partial, divider);
                     } else if (position == maxRecentStickersRow) {
-                        textCell.setTextAndValue(LocaleController.getString(R.string.MaxRecentStickers), String.valueOf(NekoConfig.maxRecentStickers), partial, divider);
+                        textCell.setTextAndValue(LocaleController.getString(R.string.MaxRecentStickers), String.valueOf(UsefulConfig.maxRecentStickers), partial, divider);
                     } else if (position == markdownParserRow) {
-                        textCell.setTextAndValue(LocaleController.getString(R.string.MarkdownParser), NekoConfig.newMarkdownParser ? "Nekogram" : "Telegram", partial, divider);
+                        textCell.setTextAndValue(LocaleController.getString(R.string.MarkdownParser), UsefulConfig.newMarkdownParser ? "Nekogram" : "Telegram", partial, divider);
                     } else if (position == transcribeProviderRow) {
-                        String value = switch (NekoConfig.transcribeProvider) {
-                            case NekoConfig.TRANSCRIBE_AUTO ->
+                        String value = switch (UsefulConfig.transcribeProvider) {
+                            case UsefulConfig.TRANSCRIBE_AUTO ->
                                     LocaleController.getString(R.string.TranscribeProviderAuto);
-                            case NekoConfig.TRANSCRIBE_WORKERSAI ->
+                            case UsefulConfig.TRANSCRIBE_WORKERSAI ->
                                     LocaleController.getString(R.string.TranscribeProviderWorkersAI);
                             default -> LocaleController.getString(R.string.TelegramPremium);
                         };
@@ -715,45 +715,45 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                     TextCheckCell textCell = (TextCheckCell) holder.itemView;
                     textCell.setEnabled(true, null);
                     if (position == ignoreBlockedRow) {
-                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.IgnoreBlocked), LocaleController.getString(R.string.IgnoreBlockedAbout), NekoConfig.ignoreBlocked, true, divider);
+                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.IgnoreBlocked), LocaleController.getString(R.string.IgnoreBlockedAbout), UsefulConfig.ignoreBlocked, true, divider);
                     } else if (position == hideKeyboardOnChatScrollRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideKeyboardOnChatScroll), NekoConfig.hideKeyboardOnChatScroll, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideKeyboardOnChatScroll), UsefulConfig.hideKeyboardOnChatScroll, divider);
                     } else if (position == rearVideoMessagesRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.RearVideoMessages), NekoConfig.rearVideoMessages, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.RearVideoMessages), UsefulConfig.rearVideoMessages, divider);
                     } else if (position == confirmAVRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.ConfirmAVMessage), NekoConfig.confirmAVMessage, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.ConfirmAVMessage), UsefulConfig.confirmAVMessage, divider);
                     } else if (position == disableProximityEventsRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableProximityEvents), NekoConfig.disableProximityEvents, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableProximityEvents), UsefulConfig.disableProximityEvents, divider);
                     } else if (position == tryToOpenAllLinksInIVRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.OpenAllLinksInInstantView), NekoConfig.tryToOpenAllLinksInIV, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.OpenAllLinksInInstantView), UsefulConfig.tryToOpenAllLinksInIV, divider);
                     } else if (position == autoPauseVideoRow) {
-                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.AutoPauseVideo), LocaleController.getString(R.string.AutoPauseVideoAbout), NekoConfig.autoPauseVideo, true, divider);
+                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.AutoPauseVideo), LocaleController.getString(R.string.AutoPauseVideoAbout), UsefulConfig.autoPauseVideo, true, divider);
                     } else if (position == disableJumpToNextRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableJumpToNextChannel), NekoConfig.disableJumpToNextChannel, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableJumpToNextChannel), UsefulConfig.disableJumpToNextChannel, divider);
                     } else if (position == disableGreetingStickerRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableGreetingSticker), NekoConfig.disableGreetingSticker, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableGreetingSticker), UsefulConfig.disableGreetingSticker, divider);
                     } else if (position == disableVoiceMessageAutoPlayRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableVoiceMessagesAutoPlay), NekoConfig.disableVoiceMessageAutoPlay, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableVoiceMessagesAutoPlay), UsefulConfig.disableVoiceMessageAutoPlay, divider);
                     } else if (position == unmuteVideosWithVolumeButtonsRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.UnmuteVideosWithVolumeButtons), NekoConfig.unmuteVideosWithVolumeButtons, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.UnmuteVideosWithVolumeButtons), UsefulConfig.unmuteVideosWithVolumeButtons, divider);
                     } else if (position == voiceEnhancementsRow) {
-                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.VoiceEnhancements), LocaleController.getString(R.string.VoiceEnhancementsAbout), NekoConfig.voiceEnhancements, true, divider);
+                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.VoiceEnhancements), LocaleController.getString(R.string.VoiceEnhancementsAbout), UsefulConfig.voiceEnhancements, true, divider);
                     } else if (position == hideTimeOnStickerRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideTimeOnSticker), NekoConfig.hideTimeOnSticker, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideTimeOnSticker), UsefulConfig.hideTimeOnSticker, divider);
                     } else if (position == markdownEnableRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.MarkdownEnableByDefault), !NekoConfig.disableMarkdownByDefault, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.MarkdownEnableByDefault), !UsefulConfig.disableMarkdownByDefault, divider);
                     } else if (position == markdownParseLinksRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.MarkdownParseLinks), NekoConfig.markdownParseLinks, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.MarkdownParseLinks), UsefulConfig.markdownParseLinks, divider);
                     } else if (position == quickForwardRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.QuickForward), NekoConfig.quickForward, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.QuickForward), UsefulConfig.quickForward, divider);
                     } else if (position == reducedColorsRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.ReducedColors), NekoConfig.reducedColors, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.ReducedColors), UsefulConfig.reducedColors, divider);
                     } else if (position == showTimeHintRow) {
-                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.ShowTimeHint), LocaleController.getString(R.string.ShowTimeHintDesc), NekoConfig.showTimeHint, true, divider);
+                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.ShowTimeHint), LocaleController.getString(R.string.ShowTimeHintDesc), UsefulConfig.showTimeHint, true, divider);
                     } else if (position == preferOriginalQualityRow) {
-                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.PreferOriginalQuality), LocaleController.getString(R.string.PreferOriginalQualityDesc), NekoConfig.preferOriginalQuality, true, divider);
+                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.PreferOriginalQuality), LocaleController.getString(R.string.PreferOriginalQualityDesc), UsefulConfig.preferOriginalQuality, true, divider);
                     } else if (position == hideChannelBottomButtonsRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideChannelBottomButtons), NekoConfig.hideChannelBottomButtons, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideChannelBottomButtons), UsefulConfig.hideChannelBottomButtons, divider);
                     }
                     break;
                 }
@@ -776,7 +776,7 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                     TextInfoPrivacyCell cell = (TextInfoPrivacyCell) holder.itemView;
                     if (position == markdown2Row) {
                         cell.getTextView().setMovementMethod(null);
-                        cell.setText(TextUtils.expandTemplate(EntitiesHelper.parseMarkdown(NekoConfig.newMarkdownParser && NekoConfig.markdownParseLinks ? LocaleController.getString(R.string.MarkdownAbout) : LocaleController.getString(R.string.MarkdownAbout2)), "**", "__", "~~", "`", "||", "[", "](", ")"));
+                        cell.setText(TextUtils.expandTemplate(EntitiesHelper.parseMarkdown(UsefulConfig.newMarkdownParser && UsefulConfig.markdownParseLinks ? LocaleController.getString(R.string.MarkdownAbout) : LocaleController.getString(R.string.MarkdownAbout2)), "**", "__", "~~", "`", "||", "[", "](", ")"));
                     } else if (position == transcribe2Row) {
                         cell.setText(LocaleController.formatString(R.string.TranscribeProviderDesc, LocaleController.getString(R.string.TranscribeProviderWorkersAI)));
                     }
@@ -786,27 +786,27 @@ public class NekoChatSettingsActivity extends BaseNekoSettingsActivity implement
                     TextCheckbox2Cell cell = (TextCheckbox2Cell) holder.itemView;
                     int menuPosition = position - messageMenuRow - 1;
                     if (menuPosition == 0) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.DeleteDownloadedFile), NekoConfig.showDeleteDownloadedFile, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.DeleteDownloadedFile), UsefulConfig.showDeleteDownloadedFile, divider);
                     } else if (menuPosition == 1) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.NoQuoteForward), NekoConfig.showNoQuoteForward, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.NoQuoteForward), UsefulConfig.showNoQuoteForward, divider);
                     } else if (menuPosition == 2) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.AddToSavedMessages), NekoConfig.showAddToSavedMessages, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.AddToSavedMessages), UsefulConfig.showAddToSavedMessages, divider);
                     } else if (menuPosition == 3) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.Repeat), NekoConfig.showRepeat, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.Repeat), UsefulConfig.showRepeat, divider);
                     } else if (menuPosition == 4) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.TranslateMessage), NekoConfig.showTranslate, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.TranslateMessage), UsefulConfig.showTranslate, divider);
                     } else if (menuPosition == 5) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.ReportChat), NekoConfig.showReport, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.ReportChat), UsefulConfig.showReport, divider);
                     } else if (menuPosition == 6) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.MessageDetails), NekoConfig.showMessageDetails, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.MessageDetails), UsefulConfig.showMessageDetails, divider);
                     } else if (menuPosition == 7) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.CopyPhoto), NekoConfig.showCopyPhoto, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.CopyPhoto), UsefulConfig.showCopyPhoto, divider);
                     } else if (menuPosition == 8) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.SetReminder), NekoConfig.showSetReminder, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.SetReminder), UsefulConfig.showSetReminder, divider);
                     } else if (menuPosition == 9) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.QrCode), NekoConfig.showQrCode, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.QrCode), UsefulConfig.showQrCode, divider);
                     } else if (menuPosition == 10) {
-                        cell.setTextAndCheck(LocaleController.getString(R.string.OpenInExternalApp), NekoConfig.showOpenIn, divider);
+                        cell.setTextAndCheck(LocaleController.getString(R.string.OpenInExternalApp), UsefulConfig.showOpenIn, divider);
                     }
                     break;
                 }

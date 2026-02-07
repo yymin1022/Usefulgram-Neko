@@ -41,7 +41,7 @@ import org.telegram.messenger.Utilities;
 import org.telegram.ui.Components.VideoPlayer;
 
 import com.yong.usefulgram.ErrorDatabase;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -405,7 +405,7 @@ public class ConnectionsManager extends BaseController {
                         if (BuildVars.LOGS_ENABLED && error.code != -2000) {
                             FileLog.e(object + " got error " + error.code + " " + error.text);
                         }
-                        if (NekoConfig.showRPCError) {
+                        if (UsefulConfig.showRPCError) {
                             ErrorDatabase.showErrorToast(object, errorText);
                         }
                     }
@@ -1076,7 +1076,7 @@ public class ConnectionsManager extends BaseController {
                 }
             }
             if (hasIpv6) {
-                if (NekoConfig.preferIPv6 || forceTryIpV6) {
+                if (UsefulConfig.preferIPv6 || forceTryIpV6) {
                     return USE_IPV6_ONLY;
                 }
                 if (hasStrangeIpv4) {

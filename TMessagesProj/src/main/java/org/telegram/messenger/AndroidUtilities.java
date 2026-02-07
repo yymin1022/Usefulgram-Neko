@@ -229,7 +229,7 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPOutputStream;
 
 import me.vkryl.core.BitwiseUtils;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.TypefaceHelper;
 
 public class AndroidUtilities {
@@ -2887,8 +2887,8 @@ public class AndroidUtilities {
     }
 
     public static boolean isTabletForce() {
-        if (NekoConfig.tabletMode != NekoConfig.TABLET_AUTO) {
-            return NekoConfig.tabletMode == NekoConfig.TABLET_ENABLE;
+        if (UsefulConfig.tabletMode != UsefulConfig.TABLET_AUTO) {
+            return UsefulConfig.tabletMode == UsefulConfig.TABLET_ENABLE;
         }
         return ApplicationLoader.applicationContext != null && ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
     }

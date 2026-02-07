@@ -13,15 +13,15 @@ import org.telegram.ui.LaunchActivity;
 
 import java.util.Locale;
 
-import com.yong.usefulgram.settings.BaseNekoSettingsActivity;
-import com.yong.usefulgram.settings.NekoAppearanceSettings;
-import com.yong.usefulgram.settings.NekoChatSettingsActivity;
-import com.yong.usefulgram.settings.NekoDonateActivity;
-import com.yong.usefulgram.settings.NekoEmojiSettingsActivity;
-import com.yong.usefulgram.settings.NekoExperimentalSettingsActivity;
-import com.yong.usefulgram.settings.NekoGeneralSettingsActivity;
-import com.yong.usefulgram.settings.NekoPasscodeSettingsActivity;
-import com.yong.usefulgram.settings.NekoSettingsActivity;
+import com.yong.usefulgram.settings.BaseUsefulSettingsActivity;
+import com.yong.usefulgram.settings.UsefulAppearanceSettings;
+import com.yong.usefulgram.settings.UsefulChatSettingsActivity;
+import com.yong.usefulgram.settings.UsefulDonateActivity;
+import com.yong.usefulgram.settings.UsefulEmojiSettingsActivity;
+import com.yong.usefulgram.settings.UsefulExperimentalSettingsActivity;
+import com.yong.usefulgram.settings.UsefulGeneralSettingsActivity;
+import com.yong.usefulgram.settings.UsefulPasscodeSettingsActivity;
+import com.yong.usefulgram.settings.UsefulSettingsActivity;
 
 public class SettingsHelper {
 
@@ -35,11 +35,11 @@ public class SettingsHelper {
             unknown.run();
             return;
         }
-        BaseNekoSettingsActivity fragment;
+        BaseUsefulSettingsActivity fragment;
         if (segments.size() == 1) {
             var segment = segments.get(0).toLowerCase(Locale.US);
             switch (segment) {
-                case "neko", "nekosettings" -> fragment = new NekoSettingsActivity();
+                case "neko", "nekosettings" -> fragment = new UsefulSettingsActivity();
                 case "update", "upgrade" -> {
                     LaunchActivity.instance.checkAppUpdate(true, progress);
                     return;
@@ -56,32 +56,32 @@ public class SettingsHelper {
         } else {
             var segment = segments.get(1);
             if (PasscodeHelper.getSettingsKey().equals(segment)) {
-                fragment = new NekoPasscodeSettingsActivity();
+                fragment = new UsefulPasscodeSettingsActivity();
             } else {
                 switch (segment.toLowerCase(Locale.US)) {
                     case "appearance":
                     case "a":
-                        fragment = new NekoAppearanceSettings();
+                        fragment = new UsefulAppearanceSettings();
                         break;
                     case "chat":
                     case "chats":
                     case "c":
-                        fragment = new NekoChatSettingsActivity();
+                        fragment = new UsefulChatSettingsActivity();
                         break;
                     case "donate":
                     case "d":
-                        fragment = new NekoDonateActivity();
+                        fragment = new UsefulDonateActivity();
                         break;
                     case "experimental":
                     case "e":
-                        fragment = new NekoExperimentalSettingsActivity();
+                        fragment = new UsefulExperimentalSettingsActivity();
                         break;
                     case "emoji":
-                        fragment = new NekoEmojiSettingsActivity();
+                        fragment = new UsefulEmojiSettingsActivity();
                         break;
                     case "general":
                     case "g":
-                        fragment = new NekoGeneralSettingsActivity();
+                        fragment = new UsefulGeneralSettingsActivity();
                         break;
                     case "reportid":
                         SettingsHelper.copyReportId();

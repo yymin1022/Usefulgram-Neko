@@ -51,9 +51,9 @@ import java.util.Locale;
 import com.yong.usefulgram.helpers.MessageHelper;
 import com.yong.usefulgram.helpers.UserHelper;
 import com.yong.usefulgram.helpers.WebAppHelper;
-import com.yong.usefulgram.settings.BaseNekoSettingsActivity;
+import com.yong.usefulgram.settings.BaseUsefulSettingsActivity;
 
-public class MessageDetailsActivity extends BaseNekoSettingsActivity implements NotificationCenter.NotificationCenterDelegate {
+public class MessageDetailsActivity extends BaseUsefulSettingsActivity implements NotificationCenter.NotificationCenterDelegate {
 
     private final MessageObject messageObject;
     private final boolean noforwards;

@@ -129,8 +129,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import com.yong.usefulgram.NekoConfig;
-import com.yong.usefulgram.location.NekoLocationSource;
+import com.yong.usefulgram.UsefulConfig;
+import com.yong.usefulgram.location.UsefulLocationSource;
 
 public class LocationActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -2385,8 +2385,8 @@ public class LocationActivity extends BaseFragment implements NotificationCenter
         for (int i = providers.size() - 1; i >= 0; i--) {
             l = lm.getLastKnownLocation(providers.get(i));
             if (l != null) {
-                if (NekoConfig.mapDriftingFix) {
-                    NekoLocationSource.transform(l);
+                if (UsefulConfig.mapDriftingFix) {
+                    UsefulLocationSource.transform(l);
                 }
                 break;
             }

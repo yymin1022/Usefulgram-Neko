@@ -73,7 +73,7 @@ import org.telegram.ui.ThemeActivity;
 
 import java.util.ArrayList;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class DrawerProfileCell extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -294,7 +294,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         });
         addView(darkThemeView, LayoutHelper.createFrame(48, 48, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 6, 90));
 
-        if (Theme.getEventType() == 0 || NekoConfig.eventType == 1) {
+        if (Theme.getEventType() == 0 || UsefulConfig.eventType == 1) {
             snowflakesEffect = new SnowflakesEffect(0);
             snowflakesEffect.setColorKey(Theme.key_chats_menuName);
         }
@@ -743,7 +743,7 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         }
         animatedStatus.setColor(Theme.getColor(Theme.isCurrentThemeDark() ? Theme.key_chats_verifiedBackground : Theme.key_chats_menuPhoneCats));
         status.setColor(Theme.getColor(Theme.isCurrentThemeDark() ? Theme.key_chats_verifiedBackground : Theme.key_chats_menuPhoneCats));
-        if (!NekoConfig.hidePhone) {
+        if (!UsefulConfig.hidePhone) {
             phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
         } else if (!TextUtils.isEmpty(user.username)) {
             phoneTextView.setText("@" + user.username);
@@ -753,17 +753,17 @@ public class DrawerProfileCell extends FrameLayout implements NotificationCenter
         AvatarDrawable avatarDrawable = new AvatarDrawable(user);
         avatarDrawable.setColor(Theme.getColor(Theme.key_avatar_backgroundInProfileBlue));
         avatarImageView.setForUserOrChat(user, avatarDrawable);
-        if (NekoConfig.avatarAsDrawerBackground) {
+        if (UsefulConfig.avatarAsDrawerBackground) {
             avatarAsDrawerBackground = user.photo != null;
             if (avatarAsDrawerBackground) {
                 BitmapDrawable strippedBitmap = user.photo.strippedBitmap;
                 var hasStripped = user.photo.stripped_thumb != null;
                 var imageLocation = ImageLocation.getForUser(user, ImageLocation.TYPE_BIG);
                 var filter = "512_512";
-                if (NekoConfig.avatarBackgroundBlur) {
+                if (UsefulConfig.avatarBackgroundBlur) {
                     filter += "_blur";
                 }
-                if (NekoConfig.avatarBackgroundDarken) {
+                if (UsefulConfig.avatarBackgroundDarken) {
                     filter += "_darken";
                 }
                 if (strippedBitmap != null) {

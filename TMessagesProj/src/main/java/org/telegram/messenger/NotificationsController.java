@@ -92,7 +92,7 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.MessageFilterHelper;
 import com.yong.usefulgram.helpers.PasscodeHelper;
 
@@ -4288,7 +4288,7 @@ public class NotificationsController extends BaseController {
                 notifyDisabled = true;
             }
 
-            if (NekoConfig.silenceNonContacts && chat == null && getContactsController().contactsDict.get(userId) == null) {
+            if (UsefulConfig.silenceNonContacts && chat == null && getContactsController().contactsDict.get(userId) == null) {
                 notifyDisabled = true;
             }
 
@@ -4526,7 +4526,7 @@ public class NotificationsController extends BaseController {
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(NekoConfig.getNotificationColor());
+                    .setColor(UsefulConfig.getNotificationColor());
 
             long[] vibrationPattern = null;
             Uri sound = null;
@@ -5494,7 +5494,7 @@ public class NotificationsController extends BaseController {
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(dialogKey.story ? storyPushMessages.size() : messageObjects.size())
-                    .setColor(NekoConfig.getNotificationColor())
+                    .setColor(UsefulConfig.getNotificationColor())
                     .setGroupSummary(false)
                     .setWhen(date)
                     .setShowWhen(true)

@@ -59,7 +59,7 @@ import org.telegram.ui.Components.inset.WindowInsetsStateHolder;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public abstract class BaseNekoSettingsActivity extends BaseFragment {
+public abstract class BaseUsefulSettingsActivity extends BaseFragment {
 
     protected static final Object PARTIAL = new Object();
 
@@ -117,7 +117,7 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
         listView = new BlurredRecyclerView(context, resourcesProvider) {
             @Override
             public Integer getSelectorColor(int position) {
-                return BaseNekoSettingsActivity.this.getSelectorColor(position);
+                return BaseUsefulSettingsActivity.this.getSelectorColor(position);
             }
         };
         listView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -159,7 +159,7 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
                             } else {
                                 AndroidUtilities.addToClipboard(String.format(Locale.getDefault(), "https://%s/nekosettings/%s?r=%s", getMessagesController().linkPrefix, getKey(), rowKey));
                             }
-                            BulletinFactory.of(BaseNekoSettingsActivity.this).createCopyLinkBulletin().show();
+                            BulletinFactory.of(BaseUsefulSettingsActivity.this).createCopyLinkBulletin().show();
                         })
                         .setMinWidth(190)
                         .show();

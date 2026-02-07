@@ -47,10 +47,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.EmojiHelper;
 
-public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implements ChatAttachAlertDocumentLayout.DocumentSelectActivityDelegate {
+public class UsefulEmojiSettingsActivity extends BaseUsefulSettingsActivity implements ChatAttachAlertDocumentLayout.DocumentSelectActivityDelegate {
 
     private static final int menu_delete = 0;
     private static final int menu_share = 1;
@@ -114,14 +114,14 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
     @Override
     protected void onItemClick(View view, int position, float x, float y) {
         if (position == useSystemEmojiRow) {
-            NekoConfig.toggleUseSystemEmoji();
+            UsefulConfig.toggleUseSystemEmoji();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.useSystemEmoji);
+                ((TextCheckCell) view).setChecked(UsefulConfig.useSystemEmoji);
             }
             EmojiHelper.reloadEmoji();
             listAdapter.notifyEmojiSetsChanged();
         } else if (position == emojiAddRow) {
-            chatAttachAlert = new ChatAttachAlert(getParentActivity(), NekoEmojiSettingsActivity.this, false, false);
+            chatAttachAlert = new ChatAttachAlert(getParentActivity(), UsefulEmojiSettingsActivity.this, false, false);
             chatAttachAlert.setEmojiPicker();
             chatAttachAlert.init();
             chatAttachAlert.show();
@@ -330,9 +330,9 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
                     TextCheckCell textCheckCell = (TextCheckCell) holder.itemView;
                     if (position == useSystemEmojiRow) {
                         if (partial) {
-                            textCheckCell.setChecked(NekoConfig.useSystemEmoji);
+                            textCheckCell.setChecked(UsefulConfig.useSystemEmoji);
                         } else {
-                            textCheckCell.setTextAndCheck(LocaleController.getString(R.string.EmojiUseDefault), NekoConfig.useSystemEmoji, divider);
+                            textCheckCell.setTextAndCheck(LocaleController.getString(R.string.EmojiUseDefault), UsefulConfig.useSystemEmoji, divider);
                         }
                     }
                     break;
@@ -363,7 +363,7 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
                     }
                     emojiPackSetCell.setSelected(selectedItems.get(position, false), partial);
                     if (emojiPackInfo != null) {
-                        emojiPackSetCell.setChecked(!hasSelected() && emojiPackInfo.getPackId().equals(EmojiHelper.getInstance().getSelectedEmojiPackId()) && !NekoConfig.useSystemEmoji, partial);
+                        emojiPackSetCell.setChecked(!hasSelected() && emojiPackInfo.getPackId().equals(EmojiHelper.getInstance().getSelectedEmojiPackId()) && !UsefulConfig.useSystemEmoji, partial);
                         emojiPackSetCell.setData(emojiPackInfo, partial, divider);
                     }
                     break;
@@ -501,7 +501,7 @@ public class NekoEmojiSettingsActivity extends BaseNekoSettingsActivity implemen
                     mContext.startActivity(Intent.createChooser(intent, LocaleController.getString(R.string.ShareFile)));
                     clearSelected();
                 } else {
-                    EmojiHelper.getInstance().cancelableDelete(NekoEmojiSettingsActivity.this, pack, new EmojiHelper.OnBulletinAction() {
+                    EmojiHelper.getInstance().cancelableDelete(UsefulEmojiSettingsActivity.this, pack, new EmojiHelper.OnBulletinAction() {
                         @Override
                         public void onPreStart() {
                             notifyItemRemoved(emojiStartRow + emojiPacks.indexOf(pack));

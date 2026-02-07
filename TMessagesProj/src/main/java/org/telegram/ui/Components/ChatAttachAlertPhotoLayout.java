@@ -114,7 +114,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -2460,7 +2460,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             gridView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
         }
 
-        if ((NekoConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null && cameraView.isInited()) {
+        if ((UsefulConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null && cameraView.isInited()) {
             cameraView.showTexture(true, animated);
         }
     }
@@ -2486,7 +2486,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             return;
         }
         if (cameraView == null) {
-            final boolean lazy = NekoConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT);
+            final boolean lazy = UsefulConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT);
             cameraView = new CameraView(getContext(), isCameraFrontfaceBeforeEnteringEditMode != null ? isCameraFrontfaceBeforeEnteringEditMode : parentAlert.openWithFrontFaceCamera, lazy) {
 
                 Bulletin.Delegate bulletinDelegate = new Bulletin.Delegate() {
@@ -2936,7 +2936,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             gridView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_AUTO);
         }
 
-        if ((NekoConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null) {
+        if ((UsefulConfig.disableInstantCamera || !LiteMode.isEnabled(LiteMode.FLAGS_CHAT)) && cameraView != null) {
             cameraView.showTexture(false, animated);
         }
     }

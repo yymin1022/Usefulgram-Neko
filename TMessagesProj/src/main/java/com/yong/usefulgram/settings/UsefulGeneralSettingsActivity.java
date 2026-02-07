@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import app.nekogram.translator.DeepLTranslator;
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 import com.yong.usefulgram.helpers.PopupHelper;
 import com.yong.usefulgram.translator.Translator;
 import com.yong.usefulgram.translator.TranslatorApps;
 
-public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
+public class UsefulGeneralSettingsActivity extends BaseUsefulSettingsActivity {
 
     private int connectionRow;
     private int ipv6Row;
@@ -62,9 +62,9 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
     @Override
     protected void onItemClick(View view, int position, float x, float y) {
         if (position == ipv6Row) {
-            NekoConfig.toggleIPv6();
+            UsefulConfig.toggleIPv6();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.preferIPv6);
+                ((TextCheckCell) view).setChecked(UsefulConfig.preferIPv6);
             }
             for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {
                 if (UserConfig.getInstance(a).isClientActivated()) {
@@ -72,9 +72,9 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                 }
             }
         } else if (position == disabledInstantCameraRow) {
-            NekoConfig.toggleDisabledInstantCamera();
+            UsefulConfig.toggleDisabledInstantCamera();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.disableInstantCamera);
+                ((TextCheckCell) view).setChecked(UsefulConfig.disableInstantCamera);
             }
         } else if (position == nameOrderRow) {
             ArrayList<String> arrayList = new ArrayList<>();
@@ -83,13 +83,13 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
             types.add(1);
             arrayList.add(LocaleController.getString(R.string.LastFirst));
             types.add(2);
-            PopupHelper.show(arrayList, LocaleController.getString(R.string.NameOrder), types.indexOf(NekoConfig.nameOrder), getParentActivity(), view, i -> {
-                NekoConfig.setNameOrder(types.get(i));
+            PopupHelper.show(arrayList, LocaleController.getString(R.string.NameOrder), types.indexOf(UsefulConfig.nameOrder), getParentActivity(), view, i -> {
+                UsefulConfig.setNameOrder(types.get(i));
                 listAdapter.notifyItemChanged(nameOrderRow, PARTIAL);
                 parentLayout.rebuildAllFragmentViews(false, false);
             }, resourcesProvider);
         } else if (position == translationProviderRow) {
-            final String oldProvider = NekoConfig.translationProvider;
+            final String oldProvider = UsefulConfig.translationProvider;
             Translator.showTranslationProviderSelector(getParentActivity(), view, param -> {
                 if (param) {
                     listAdapter.notifyItemChanged(translationProviderRow, PARTIAL);
@@ -97,11 +97,11 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                     listAdapter.notifyItemChanged(translationProviderRow, PARTIAL);
                     listAdapter.notifyItemChanged(translationTargetRow, PARTIAL);
                 }
-                if (!oldProvider.equals(NekoConfig.translationProvider)) {
+                if (!oldProvider.equals(UsefulConfig.translationProvider)) {
                     if (oldProvider.equals(Translator.PROVIDER_DEEPL)) {
                         listAdapter.notifyItemRemoved(deepLFormalityRow);
                         updateRows();
-                    } else if (NekoConfig.translationProvider.equals(Translator.PROVIDER_DEEPL)) {
+                    } else if (UsefulConfig.translationProvider.equals(Translator.PROVIDER_DEEPL)) {
                         updateRows();
                         listAdapter.notifyItemInserted(deepLFormalityRow);
                     }
@@ -123,90 +123,90 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
             types.add(DeepLTranslator.FORMALITY_MORE);
             arrayList.add(LocaleController.getString(R.string.DeepLFormalityLess));
             types.add(DeepLTranslator.FORMALITY_LESS);
-            PopupHelper.show(arrayList, LocaleController.getString(R.string.DeepLFormality), types.indexOf(NekoConfig.deepLFormality), getParentActivity(), view, i -> {
-                NekoConfig.setDeepLFormality(types.get(i));
+            PopupHelper.show(arrayList, LocaleController.getString(R.string.DeepLFormality), types.indexOf(UsefulConfig.deepLFormality), getParentActivity(), view, i -> {
+                UsefulConfig.setDeepLFormality(types.get(i));
                 listAdapter.notifyItemChanged(deepLFormalityRow, PARTIAL);
             }, resourcesProvider);
         } else if (position == openArchiveOnPullRow) {
-            NekoConfig.toggleOpenArchiveOnPull();
+            UsefulConfig.toggleOpenArchiveOnPull();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.openArchiveOnPull);
+                ((TextCheckCell) view).setChecked(UsefulConfig.openArchiveOnPull);
             }
         } else if (position == askBeforeCallRow) {
-            NekoConfig.toggleAskBeforeCall();
+            UsefulConfig.toggleAskBeforeCall();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.askBeforeCall);
+                ((TextCheckCell) view).setChecked(UsefulConfig.askBeforeCall);
             }
         } else if (position == idTypeRow) {
             ArrayList<String> arrayList = new ArrayList<>();
             ArrayList<Integer> types = new ArrayList<>();
             arrayList.add(LocaleController.getString(R.string.IdTypeHidden));
-            types.add(NekoConfig.ID_TYPE_HIDDEN);
+            types.add(UsefulConfig.ID_TYPE_HIDDEN);
             arrayList.add(LocaleController.getString(R.string.IdTypeAPI));
-            types.add(NekoConfig.ID_TYPE_API);
+            types.add(UsefulConfig.ID_TYPE_API);
             arrayList.add(LocaleController.getString(R.string.IdTypeBOTAPI));
-            types.add(NekoConfig.ID_TYPE_BOTAPI);
-            PopupHelper.show(arrayList, LocaleController.getString(R.string.IdType), types.indexOf(NekoConfig.idType), getParentActivity(), view, i -> {
-                NekoConfig.setIdType(types.get(i));
+            types.add(UsefulConfig.ID_TYPE_BOTAPI);
+            PopupHelper.show(arrayList, LocaleController.getString(R.string.IdType), types.indexOf(UsefulConfig.idType), getParentActivity(), view, i -> {
+                UsefulConfig.setIdType(types.get(i));
                 listAdapter.notifyItemChanged(idTypeRow, PARTIAL);
                 parentLayout.rebuildAllFragmentViews(false, false);
             }, resourcesProvider);
         } else if (position == accentAsNotificationColorRow) {
-            NekoConfig.toggleAccentAsNotificationColor();
+            UsefulConfig.toggleAccentAsNotificationColor();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.accentAsNotificationColor);
+                ((TextCheckCell) view).setChecked(UsefulConfig.accentAsNotificationColor);
             }
         } else if (position == silenceNonContactsRow) {
-            NekoConfig.toggleSilenceNonContacts();
+            UsefulConfig.toggleSilenceNonContacts();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.silenceNonContacts);
+                ((TextCheckCell) view).setChecked(UsefulConfig.silenceNonContacts);
             }
         } else if (position == translatorTypeRow) {
-            int oldType = NekoConfig.transType;
+            int oldType = UsefulConfig.transType;
             Translator.showTranslatorTypeSelector(getParentActivity(), view, () -> {
-                int newType = NekoConfig.transType;
+                int newType = UsefulConfig.transType;
                 listAdapter.notifyItemChanged(translatorTypeRow, PARTIAL);
                 if (oldType != newType) {
                     int count = 4;
-                    if (NekoConfig.translationProvider.equals(Translator.PROVIDER_DEEPL)) {
+                    if (UsefulConfig.translationProvider.equals(Translator.PROVIDER_DEEPL)) {
                         count++;
                     }
-                    if (oldType == NekoConfig.TRANS_TYPE_NEKO || newType == NekoConfig.TRANS_TYPE_NEKO) {
+                    if (oldType == UsefulConfig.TRANS_TYPE_NEKO || newType == UsefulConfig.TRANS_TYPE_NEKO) {
                         count++;
                     }
-                    if (oldType == NekoConfig.TRANS_TYPE_EXTERNAL) {
+                    if (oldType == UsefulConfig.TRANS_TYPE_EXTERNAL) {
                         listAdapter.notifyItemRemoved(translatorExternalAppRow);
                         updateRows();
                         listAdapter.notifyItemRangeInserted(translationProviderRow, count);
-                    } else if (newType == NekoConfig.TRANS_TYPE_EXTERNAL) {
+                    } else if (newType == UsefulConfig.TRANS_TYPE_EXTERNAL) {
                         listAdapter.notifyItemRangeRemoved(translationProviderRow, count);
                         updateRows();
                         listAdapter.notifyItemInserted(translatorExternalAppRow);
-                    } else if (oldType == NekoConfig.TRANS_TYPE_NEKO) {
+                    } else if (oldType == UsefulConfig.TRANS_TYPE_NEKO) {
                         listAdapter.notifyItemRemoved(showOriginalRow);
                         updateRows();
-                    } else if (newType == NekoConfig.TRANS_TYPE_NEKO) {
+                    } else if (newType == UsefulConfig.TRANS_TYPE_NEKO) {
                         updateRows();
                         listAdapter.notifyItemInserted(showOriginalRow);
                     }
                 }
             }, resourcesProvider);
         } else if (position == doNotTranslateRow) {
-            presentFragment(new NekoLanguagesSelectActivity(NekoLanguagesSelectActivity.TYPE_RESTRICTED, true));
+            presentFragment(new UsefulLanguagesSelectActivity(UsefulLanguagesSelectActivity.TYPE_RESTRICTED, true));
         } else if (position == autoTranslateRow) {
-            NekoConfig.toggleAutoTranslate();
+            UsefulConfig.toggleAutoTranslate();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.autoTranslate);
+                ((TextCheckCell) view).setChecked(UsefulConfig.autoTranslate);
             }
         } else if (position == showOriginalRow) {
-            NekoConfig.toggleShowOriginal();
+            UsefulConfig.toggleShowOriginal();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.showOriginal);
+                ((TextCheckCell) view).setChecked(UsefulConfig.showOriginal);
             }
         } else if (position == hideStoriesRow) {
-            NekoConfig.toggleHideStories();
+            UsefulConfig.toggleHideStories();
             if (view instanceof TextCheckCell) {
-                ((TextCheckCell) view).setChecked(NekoConfig.hideStories);
+                ((TextCheckCell) view).setChecked(UsefulConfig.hideStories);
             }
             getNotificationCenter().postNotificationName(NotificationCenter.storiesEnabledUpdate);
         } else if (position == translatorExternalAppRow) {
@@ -236,11 +236,11 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
 
         translatorRow = addRow("translator");
         translatorTypeRow = addRow("translatorType");
-        if (NekoConfig.transType != NekoConfig.TRANS_TYPE_EXTERNAL) {
+        if (UsefulConfig.transType != UsefulConfig.TRANS_TYPE_EXTERNAL) {
             translatorExternalAppRow = -1;
-            showOriginalRow = NekoConfig.transType == NekoConfig.TRANS_TYPE_NEKO ? addRow("showOriginalRow") : -1;
+            showOriginalRow = UsefulConfig.transType == UsefulConfig.TRANS_TYPE_NEKO ? addRow("showOriginalRow") : -1;
             translationProviderRow = addRow("translationProvider");
-            deepLFormalityRow = NekoConfig.translationProvider.equals(Translator.PROVIDER_DEEPL) ? addRow("deepLFormality") : -1;
+            deepLFormalityRow = UsefulConfig.translationProvider.equals(Translator.PROVIDER_DEEPL) ? addRow("deepLFormality") : -1;
             translationTargetRow = addRow("translationTarget");
             doNotTranslateRow = addRow("doNotTranslate");
             autoTranslateRow = addRow("autoTranslate");
@@ -288,7 +288,7 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                     TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     textCell.setCanDisable(true);
                     if (position == nameOrderRow) {
-                        String value = switch (NekoConfig.nameOrder) {
+                        String value = switch (UsefulConfig.nameOrder) {
                             case 2 -> LocaleController.getString(R.string.LastFirst);
                             default -> LocaleController.getString(R.string.FirstLast);
                         };
@@ -300,7 +300,7 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                         if (names == null || types == null) {
                             return;
                         }
-                        int index = types.indexOf(NekoConfig.translationProvider);
+                        int index = types.indexOf(UsefulConfig.translationProvider);
                         if (index < 0) {
                             textCell.setTextAndValue(LocaleController.getString(R.string.TranslationProviderShort), "", partial, divider);
                         } else {
@@ -308,7 +308,7 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                             textCell.setTextAndValue(LocaleController.getString(R.string.TranslationProviderShort), value, partial, divider);
                         }
                     } else if (position == translationTargetRow) {
-                        String language = NekoConfig.translationTarget;
+                        String language = UsefulConfig.translationTarget;
                         CharSequence value;
                         if (language.equals("app")) {
                             value = LocaleController.getString(R.string.TranslationTargetApp);
@@ -322,7 +322,7 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                         }
                         textCell.setTextAndValue(LocaleController.getString(R.string.TranslationTarget), value, partial, divider);
                     } else if (position == deepLFormalityRow) {
-                        String value = switch (NekoConfig.deepLFormality) {
+                        String value = switch (UsefulConfig.deepLFormality) {
                             case DeepLTranslator.FORMALITY_DEFAULT ->
                                     LocaleController.getString(R.string.DeepLFormalityDefault);
                             case DeepLTranslator.FORMALITY_MORE ->
@@ -331,19 +331,19 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                         };
                         textCell.setTextAndValue(LocaleController.getString(R.string.DeepLFormality), value, partial, divider);
                     } else if (position == idTypeRow) {
-                        String value = switch (NekoConfig.idType) {
-                            case NekoConfig.ID_TYPE_HIDDEN ->
+                        String value = switch (UsefulConfig.idType) {
+                            case UsefulConfig.ID_TYPE_HIDDEN ->
                                     LocaleController.getString(R.string.IdTypeHidden);
-                            case NekoConfig.ID_TYPE_BOTAPI ->
+                            case UsefulConfig.ID_TYPE_BOTAPI ->
                                     LocaleController.getString(R.string.IdTypeBOTAPI);
                             default -> LocaleController.getString(R.string.IdTypeAPI);
                         };
                         textCell.setTextAndValue(LocaleController.getString(R.string.IdType), value, partial, divider);
                     } else if (position == translatorTypeRow) {
-                        String value = switch (NekoConfig.transType) {
-                            case NekoConfig.TRANS_TYPE_TG ->
+                        String value = switch (UsefulConfig.transType) {
+                            case UsefulConfig.TRANS_TYPE_TG ->
                                     LocaleController.getString(R.string.TranslatorTypeTG);
-                            case NekoConfig.TRANS_TYPE_EXTERNAL ->
+                            case UsefulConfig.TRANS_TYPE_EXTERNAL ->
                                     LocaleController.getString(R.string.TranslatorTypeExternal);
                             default -> LocaleController.getString(R.string.TranslatorTypeUseful);
                         };
@@ -376,23 +376,23 @@ public class NekoGeneralSettingsActivity extends BaseNekoSettingsActivity {
                     TextCheckCell textCell = (TextCheckCell) holder.itemView;
                     textCell.setEnabled(true, null);
                     if (position == ipv6Row) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.PreferIPv6), NekoConfig.preferIPv6, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.PreferIPv6), UsefulConfig.preferIPv6, divider);
                     } else if (position == disabledInstantCameraRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableInstantCamera), NekoConfig.disableInstantCamera, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.DisableInstantCamera), UsefulConfig.disableInstantCamera, divider);
                     } else if (position == openArchiveOnPullRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.OpenArchiveOnPull), NekoConfig.openArchiveOnPull, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.OpenArchiveOnPull), UsefulConfig.openArchiveOnPull, divider);
                     } else if (position == askBeforeCallRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.AskBeforeCalling), NekoConfig.askBeforeCall, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.AskBeforeCalling), UsefulConfig.askBeforeCall, divider);
                     } else if (position == accentAsNotificationColorRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.AccentAsNotificationColor), NekoConfig.accentAsNotificationColor, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.AccentAsNotificationColor), UsefulConfig.accentAsNotificationColor, divider);
                     } else if (position == silenceNonContactsRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.SilenceNonContacts), NekoConfig.silenceNonContacts, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.SilenceNonContacts), UsefulConfig.silenceNonContacts, divider);
                     } else if (position == autoTranslateRow) {
-                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.AutoTranslate), LocaleController.getString(R.string.AutoTranslateAbout), NekoConfig.autoTranslate, true, divider);
+                        textCell.setTextAndValueAndCheck(LocaleController.getString(R.string.AutoTranslate), LocaleController.getString(R.string.AutoTranslateAbout), UsefulConfig.autoTranslate, true, divider);
                     } else if (position == showOriginalRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.TranslatorShowOriginal), NekoConfig.showOriginal, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.TranslatorShowOriginal), UsefulConfig.showOriginal, divider);
                     } else if (position == hideStoriesRow) {
-                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideStories), NekoConfig.hideStories, divider);
+                        textCell.setTextAndCheck(LocaleController.getString(R.string.HideStories), UsefulConfig.hideStories, divider);
                     }
                     break;
                 }

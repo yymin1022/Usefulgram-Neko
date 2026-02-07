@@ -27,7 +27,7 @@ import org.telegram.ui.Components.LayoutHelper;
 
 import java.io.File;
 
-import com.yong.usefulgram.NekoConfig;
+import com.yong.usefulgram.UsefulConfig;
 
 @SuppressLint("NewApi")
 public class PhotoAttachCameraCell extends FrameLayout {
@@ -84,7 +84,7 @@ public class PhotoAttachCameraCell extends FrameLayout {
 
     public void updateBitmap() {
         Bitmap bitmap = null;
-        if (!NekoConfig.disableInstantCamera) {
+        if (!UsefulConfig.disableInstantCamera) {
             try {
                 File file = new File(ApplicationLoader.getFilesDirFixed(), "cthumb.jpg");
                 bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
