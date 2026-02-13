@@ -71,9 +71,9 @@ public class UsefulSettingsActivity extends BaseUsefulSettingsActivity {
         } else if (position == accessibilityRow) {
             presentFragment(new AccessibilitySettingsActivity());
         } else if (position == websiteRow) {
-            Browser.openUrl(getParentActivity(), "https://nekogram.app");
+            Browser.openUrl(getParentActivity(), "https://dev-lr.com");
         } else if (position == sourceCodeRow) {
-            Browser.openUrl(getParentActivity(), "https://github.com/Nekogram/Nekogram");
+            Browser.openUrl(getParentActivity(), "https://github.com/yymin1022/Usefulgram");
         }
     }
 
@@ -132,7 +132,7 @@ public class UsefulSettingsActivity extends BaseUsefulSettingsActivity {
                 case TYPE_SETTINGS: {
                     TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     if (position == websiteRow) {
-                        textCell.setTextAndValue(LocaleController.getString(R.string.OfficialSite), "nekogram.app", divider);
+                        textCell.setTextAndValue(LocaleController.getString(R.string.OfficialSite), "dev-lr.com", divider);
                     } else if (position == sourceCodeRow) {
                         textCell.setTextAndValue(LocaleController.getString(R.string.ViewSourceCode), "GitHub", divider);
                     }
