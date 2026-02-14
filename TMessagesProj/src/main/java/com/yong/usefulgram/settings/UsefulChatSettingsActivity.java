@@ -323,7 +323,7 @@ public class UsefulChatSettingsActivity extends BaseUsefulSettingsActivity imple
             stickerSizeCell.invalidate();
         } else if (position == markdownParserRow) {
             ArrayList<String> arrayList = new ArrayList<>();
-            arrayList.add("Nekogram");
+            arrayList.add("Usefulgram");
             arrayList.add("Telegram");
             boolean oldParser = UsefulConfig.newMarkdownParser;
             PopupHelper.show(arrayList, LocaleController.getString(R.string.MarkdownParser), UsefulConfig.newMarkdownParser ? 0 : 1, getParentActivity(), view, i -> {
@@ -696,7 +696,7 @@ public class UsefulChatSettingsActivity extends BaseUsefulSettingsActivity imple
                     } else if (position == maxRecentStickersRow) {
                         textCell.setTextAndValue(LocaleController.getString(R.string.MaxRecentStickers), String.valueOf(UsefulConfig.maxRecentStickers), partial, divider);
                     } else if (position == markdownParserRow) {
-                        textCell.setTextAndValue(LocaleController.getString(R.string.MarkdownParser), UsefulConfig.newMarkdownParser ? "Nekogram" : "Telegram", partial, divider);
+                        textCell.setTextAndValue(LocaleController.getString(R.string.MarkdownParser), UsefulConfig.newMarkdownParser ? "Usefulgram" : "Telegram", partial, divider);
                     } else if (position == transcribeProviderRow) {
                         String value = switch (UsefulConfig.transcribeProvider) {
                             case UsefulConfig.TRANSCRIBE_AUTO ->
